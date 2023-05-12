@@ -1,0 +1,21 @@
+<div class="container" style="max-width: 500px;">
+  <form>
+    <div class="input-group mb-3">
+      <input [(ngModel)]="newTask.title
+    " class="form-control" name="taskTitle" type="text" placeholder="Todo" #newTask>
+      <button (click)="add( newTask.value)" class="btn add-button">Add</button>
+    </div>
+  </form>
+  <ul class="list-group">
+    <li class="list-group-item d-flex" *ngFor="let taskItem of taskItems; let i = index" [class.even]="i%2==0"
+      [class.odd]="i%2">
+      <div class="me-auto p-2">
+        <input (click)="taskItem.toggleIsDone()" class="checkbox form-check-input me-2" type="checkbox" value=""
+          id="firstCheckbox">
+
+        <label class="form-check-label" for="firstCheckbox" [class.is-done]="taskItem.isDone">{{taskItem.title}}</label>
+      </div>
+      <span (click)="remove(taskItem)" class="btn btn-sm"><mat-icon class="remove-button">delete_forever</mat-icon></span>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,61 @@
+.add-button {
+  color: #ffffff;
+  background-color: rgb(23, 23, 23);
+
+}
+
+.remove-button {
+  color: rgb(180, 15, 15);
+}
+
+.edit-button {
+  color: blue;
+
+}
+.even {
+  background-color: #8c617f;
+  color: rgb(255, 255, 255);
+}
+
+.odd {
+  background-color: #463956;
+  color: rgb(255, 255, 255);
+}
+
+.is-done {
+  text-decoration: line-through;
+  color: #4e4646;
+}
+
+.checkbox{
+border-color: black;
+cursor: pointer;
+}
+.form-check-input:checked {
+  background-color: #4e4646
+
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 .15rem rgb(67, 70, 83, 0,25);
+}
+
+.modal-dialog {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  max-height: 500px;
+  max-width: 300px;
+  min-width: 250px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.modal-content {
+  background-color: rgb(174, 183, 217);
+
+}
+
+.modal-title, .modal-body {
+  margin: 0 auto;
+}
