@@ -13,7 +13,7 @@
         <input (click)="taskItem.toggleIsDone()" class="checkbox form-check-input me-2" type="checkbox" value=""
           id="firstCheckbox">
 
-        <label class="form-check-label" for="firstCheckbox" [class.is-done]="taskItem.isDone">{{taskItem.title}}</label>
+        <label class="form-check-label" [class.is-done]="taskItem.isDone">{{taskItem.title}}</label>
       </div>
       <span (click)="remove(taskItem)" class="btn btn-sm"><mat-icon class="remove-button">delete_forever</mat-icon></span>
     </li>
