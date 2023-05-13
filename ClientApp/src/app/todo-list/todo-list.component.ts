@@ -19,14 +19,18 @@ export class TodoListComponent {
       // console.log(date);
 
       //**load saved Tasks */
-      this.taskItems = this.taskService.getAllTasks();
+      this.taskService.getAllTasks().subscribe((result) => {
+        this.taskItems =result;
+      });
     }
 
   add(newTask: string){
-    this.taskService.addTask(newTask)
+    this.taskService.addTask(newTask).subscribe();
   }
 
   remove(existingTask : TaskItem){
-    this.taskService.removeTask(existingTask);
+    this.taskService.removeTask(existingTask).subscribe();
+    this.taskItems = this.taskItems.filter(t => t != existingTask);
   }
 }
+

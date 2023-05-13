@@ -11,6 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './service/in-memory-data.service';
 
 
 @NgModule({
@@ -26,6 +28,7 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     TodoListModule,
     CalendarModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
     RouterModule.forRoot([
 
       { path: 'counter', component: CounterComponent },

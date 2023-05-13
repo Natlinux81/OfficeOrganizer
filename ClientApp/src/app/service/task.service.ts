@@ -1,24 +1,31 @@
 import { Injectable } from '@angular/core';
-import { TaskItems } from '../todo-list/mock-tasks';
 import { TaskItem } from '../shared/task-item';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
 
-  constructor() { }
+  constructor(private httpClient : HttpClient) { }
 
-  getAllTasks() : TaskItem[]{
-    return TaskItems;
+  tasksUrl: string = "/api/taskItems"
+
+  getAllTasks() : Observable <TaskItem[]> {
+    var response = this.httpClient.get<TaskItem[]>(this.tasksUrl);
+    return response;
   }
 
-  addTask(newTask: string){
-    TaskItems.push(new TaskItem(newTask))
+  addTask(newTask : string) : Observable <TaskItem>{
+    var response = this.httpClient.post<TaskItem>(this.tasksUrl, newTask);
+    console.log("addTask response",newTask)
+    return response;
   }
 
-  removeTask(existingTask: TaskItem){
-    var index = TaskItems.indexOf(existingTask);
-    TaskItems.splice(index,1);
+  removeTask(existingTask : TaskItem) : Observable<TaskItem> {
+    var response = this.httpClient.delete<TaskItem>(this.tasksUrl + "/" + existingTask)
+    console.log("remove" ,TaskItem)
+    return response;
   }
 }
