@@ -28,7 +28,7 @@ import { InMemoryDataService } from './service/in-memory-data.service';
     HttpClientModule,
     TodoListModule,
     CalendarModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation:false}),
     RouterModule.forRoot([
 
       { path: 'counter', component: CounterComponent },

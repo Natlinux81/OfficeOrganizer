@@ -1,5 +1,6 @@
 export class TaskItem {
   constructor(
+    public id : number,
     public title: string){
   }
 

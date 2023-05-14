@@ -28,4 +28,9 @@ export class TaskService {
     console.log("remove" ,TaskItem)
     return response;
   }
+
+  toggleTask(checkedTask :TaskItem) : Observable<TaskItem>{
+    var response = this.httpClient.post<TaskItem>(this.tasksUrl, checkedTask);
+    return response;
+  }
 }

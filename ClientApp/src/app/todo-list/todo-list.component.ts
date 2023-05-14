@@ -31,6 +31,13 @@ export class TodoListComponent {
   remove(existingTask : TaskItem){
     this.taskService.removeTask(existingTask).subscribe();
     this.taskItems = this.taskItems.filter(t => t != existingTask);
+    console.log("delete",existingTask)
+  }
+
+  toggle(checkedTask : TaskItem){
+    this.taskService.toggleTask(checkedTask).subscribe();
+    checkedTask.isDone = !checkedTask.isDone;
+    console.log("completed",checkedTask)
   }
 }
 
