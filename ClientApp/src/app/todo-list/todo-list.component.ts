@@ -11,6 +11,8 @@ export class TodoListComponent {
 
   taskItems : TaskItem[] = [];
 
+  taskIdCounter = 0;
+
   constructor(private taskService : TaskService) {}
 
   ngOnInit(): void{
@@ -24,20 +26,24 @@ export class TodoListComponent {
       });
     }
 
-  add(newTask: string){
-    this.taskService.addTask(newTask).subscribe();
-  }
+    add(newTask: string){
+      const task:TaskItem={
+        id: null,
+        title:newTask,
+        isDone:false
+      };
+      this.taskService.addTask(task).subscribe();
+      this.taskItems.push(task)
+    }
 
   remove(existingTask : TaskItem){
     this.taskService.removeTask(existingTask).subscribe();
     this.taskItems = this.taskItems.filter(t => t != existingTask);
-    console.log("delete",existingTask)
   }
 
   toggle(checkedTask : TaskItem){
     this.taskService.toggleTask(checkedTask).subscribe();
     checkedTask.isDone = !checkedTask.isDone;
-    console.log("completed",checkedTask)
   }
 }
 

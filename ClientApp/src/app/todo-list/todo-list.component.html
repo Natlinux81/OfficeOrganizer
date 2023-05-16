@@ -1,9 +1,9 @@
 <div class="container" style="max-width: 500px;">
-  <form>
+  <form #FormAdd="ngForm">
     <div class="input-group mb-3">
-      <input [(ngModel)]="newTask.title
+      <input required [(ngModel)]="newTask.title
     " class="form-control" name="taskTitle" type="text" placeholder="Todo" #newTask>
-      <button (click)="add(newTask.value)" class="btn add-button">Add</button>
+      <button [disabled]="FormAdd.invalid" (click)="add(newTask.value)" class="btn add-button">Add</button>
     </div>
   </form>
   <ul class="list-group">

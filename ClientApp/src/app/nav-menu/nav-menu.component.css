@@ -13,6 +13,26 @@ html {
   margin-right: 1rem;
 }
 
+a {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+a:link {
+  color: blue;
+}
+
+a:visited {
+  color: white;
+}
+
+a:focus,
+a:hover {
+  border-bottom: 1px solid;
+}
+
+
 
 
 @media (min-width: 768px) {

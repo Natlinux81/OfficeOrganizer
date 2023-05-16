@@ -1,11 +1,7 @@
-export class TaskItem {
+export class TaskItem{
   constructor(
-    public id : number,
+    public id : any = null,
     public title: string){
-  }
-
-  toggleIsDone(){
-    this.isDone = !this.isDone;
   }
 
   public isDone = false;

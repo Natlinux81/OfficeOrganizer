@@ -17,15 +17,13 @@ export class TaskService {
     return response;
   }
 
-  addTask(newTask : string) : Observable <TaskItem>{
+  addTask(newTask : TaskItem) : Observable <TaskItem>{
     var response = this.httpClient.post<TaskItem>(this.tasksUrl, newTask);
-    console.log("addTask response",newTask)
     return response;
   }
 
   removeTask(existingTask : TaskItem) : Observable<TaskItem> {
     var response = this.httpClient.delete<TaskItem>(this.tasksUrl + "/" + existingTask)
-    console.log("remove" ,TaskItem)
     return response;
   }
 
