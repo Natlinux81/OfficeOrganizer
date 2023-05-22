@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { TaskItem } from '../shared/task-item';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,20 +11,31 @@ export class TaskService {
 
   constructor(private httpClient : HttpClient) { }
 
-  tasksUrl: string = "/api/taskItems"
+  tasksUrl = environment.taskUrl
 
   getAllTasks() : Observable <TaskItem[]> {
-    var response = this.httpClient.get<TaskItem[]>(this.tasksUrl);
+    var response = this.httpClient.get<TaskItem[]>(this.tasksUrl + '/api/TaskItem');
     return response;
   }
 
   addTask(newTask : TaskItem) : Observable <TaskItem>{
-    var response = this.httpClient.post<TaskItem>(this.tasksUrl, newTask);
+    newTask.id = "00000000-0000-0000-0000-000000000000";
+    var response = this.httpClient.post<TaskItem>(this.tasksUrl + '/api/TaskItem',newTask);
     return response;
   }
 
-  removeTask(existingTask : TaskItem) : Observable<TaskItem> {
-    var response = this.httpClient.delete<TaskItem>(this.tasksUrl + "/" + existingTask)
+  getTaskById(id : string) : Observable <TaskItem>{
+    var response = this.httpClient.get<TaskItem>(this.tasksUrl + '/api/TaskItem/' + id);
+    return response;
+  }
+
+  updateTask(id : string, updateTask : TaskItem) : Observable <TaskItem>{
+    var response = this.httpClient.put<TaskItem>(this.tasksUrl + '/api/TaskItem/' + id, updateTask);
+    return response;
+  }
+
+  deleteTask(id: string) : Observable<TaskItem> {
+    var response = this.httpClient.delete<TaskItem>(this.tasksUrl + "/api/TaskItem/" + id)
     return response;
   }
 

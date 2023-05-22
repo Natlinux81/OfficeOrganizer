@@ -9,7 +9,8 @@ const routes: Routes = [
   //{component: CalendarComponent, path: ''},
   { path: '', component: HomeComponent, pathMatch: 'full' },
   {component: TodoListComponent, path: 'todo'},
-  {component: TodoListComponent, path: 'edit/title'}
+  {component: TodoListComponent, path: 'todo/check/:id'},
+  {component: TodoListComponent, path: 'todo/edit/:id'}
 ]
 
 @NgModule({

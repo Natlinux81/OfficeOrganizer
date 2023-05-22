@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TodoListComponent } from './todo-list.component';
 import {MatIconModule} from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   exports: [
     TodoListComponent

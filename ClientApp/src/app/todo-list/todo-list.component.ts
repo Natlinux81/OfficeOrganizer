@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskItem } from '../shared/task-item';
 import { TaskService } from '../service/task.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo-list',
@@ -11,9 +12,23 @@ export class TodoListComponent {
 
   taskItems : TaskItem[] = [];
 
-  taskIdCounter = 0;
+  newTask : TaskItem = {
+    id: '',
+    title:'',
+    isDone:false,
+    showTaskItem: true
+  };
 
-  constructor(private taskService : TaskService) {}
+  selectedTask : TaskItem = {
+    id: '',
+    title:'',
+    isDone:false,
+    showTaskItem: true
+  };
+
+  constructor(private taskService : TaskService,
+              private activatedRoute : ActivatedRoute,
+              private router : Router) {}
 
   ngOnInit(): void{
       //** datepicker */
@@ -24,21 +39,40 @@ export class TodoListComponent {
       this.taskService.getAllTasks().subscribe((result) => {
         this.taskItems =result;
       });
+
+      this.activatedRoute.paramMap.subscribe({
+        next: (params) =>{
+          var id = params.get('id');
+
+          if(id){
+            this.taskService.getTaskById(id).subscribe({
+              next: (response) =>{
+                this.selectedTask = response;
+              }
+            });
+          }
+        }
+      })
     }
 
-    add(newTask: string){
-      const task:TaskItem={
-        id: null,
-        title:newTask,
-        isDone:false
-      };
-      this.taskService.addTask(task).subscribe();
-      this.taskItems.push(task)
+    update(){
+      this.taskService.updateTask(this.selectedTask.id, this.selectedTask).subscribe();
+      console.log(this.selectedTask)
+      this.ngOnInit();
+      this.router.navigate(['todo']);
     }
 
-  remove(existingTask : TaskItem){
-    this.taskService.removeTask(existingTask).subscribe();
-    this.taskItems = this.taskItems.filter(t => t != existingTask);
+    add(){
+      this.taskService.addTask(this.newTask).subscribe((result) =>{
+        console.log(result)
+        this.taskItems.push(result);
+      });
+    }
+
+
+  delete(id : string){
+    this.taskService.deleteTask(id).subscribe();
+    this.taskItems = this.taskItems.filter(t => t.id != id);
   }
 
   toggle(checkedTask : TaskItem){
