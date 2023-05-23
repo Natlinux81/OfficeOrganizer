@@ -39,8 +39,8 @@ export class TaskService {
     return response;
   }
 
-  toggleTask(checkedTask :TaskItem) : Observable<TaskItem>{
-    var response = this.httpClient.post<TaskItem>(this.tasksUrl, checkedTask);
+  toggleTask(id: string, checkedTask :TaskItem) : Observable<TaskItem>{
+    var response = this.httpClient.put<TaskItem>(this.tasksUrl, '/api/TaskItems' + id + checkedTask);
     return response;
   }
 }
