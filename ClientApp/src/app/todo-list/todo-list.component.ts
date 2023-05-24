@@ -55,10 +55,12 @@ export class TodoListComponent {
       })
     }
 
+
     update(){
       this.taskService.updateTask(this.selectedTask.id, this.selectedTask).subscribe(()=>{
         this.ngOnInit();
       this.router.navigate(['todo']);
+
       });
     }
 
@@ -76,7 +78,7 @@ export class TodoListComponent {
   }
 
   toggle(checkedTask : TaskItem){
-    this.taskService.toggleTask(checkedTask).subscribe();
+    this.taskService.toggleTask(checkedTask.id, checkedTask).subscribe();
     checkedTask.isDone = !checkedTask.isDone;
   }
 }
