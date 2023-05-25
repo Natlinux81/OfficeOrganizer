@@ -56,10 +56,10 @@ export class TodoListComponent {
     }
 
     update(){
-      this.taskService.updateTask(this.selectedTask.id, this.selectedTask).subscribe();
-      console.log(this.selectedTask)
-      this.ngOnInit();
+      this.taskService.updateTask(this.selectedTask.id, this.selectedTask).subscribe((result) => {
+        this.ngOnInit();
       this.router.navigate(['todo']);
+      });
     }
 
     add(){
