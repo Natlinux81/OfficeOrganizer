@@ -63,23 +63,7 @@ namespace OfficeOrganizer.Controllers
           taskItem.Title = updateTaskItem.Title;
 
           await _applicationDbContext.SaveChangesAsync();
-          return Ok();
-        }
-
-        [HttpPut]
-        [Route("{id:Guid}")]
-        public async Task<IActionResult> toggleTask([FromRoute] Guid id, TaskItem updateTaskItem)
-        {
-            var taskItem = await _applicationDbContext.TaskItems.FindAsync(id);
-
-            if(taskItem == null)
-          {
-            return NotFound();
-          }
-          taskItem.Title = updateTaskItem.Title;
-
-          await _applicationDbContext.SaveChangesAsync();
-          return Ok();
+          return Ok(taskItem);
         }
 
         [HttpDelete]
