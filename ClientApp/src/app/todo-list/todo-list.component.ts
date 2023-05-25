@@ -57,7 +57,7 @@ export class TodoListComponent {
 
 
     update(){
-      this.taskService.updateTask(this.selectedTask.id, this.selectedTask).subscribe((result) => {
+      this.taskService.updateTask(this.selectedTask.id, this.selectedTask).subscribe(()=>{
         this.ngOnInit();
       this.router.navigate(['todo']);
       });
