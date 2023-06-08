@@ -12,5 +12,9 @@
             "database": "OfficeOrganizer",
             "username": "root"
         }
+    ],
+    "cSpell.words": [
+        "Hsts",
+        "natlinux"
     ]
 }
