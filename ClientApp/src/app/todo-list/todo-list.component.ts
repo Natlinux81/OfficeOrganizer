@@ -10,16 +10,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class TodoListComponent {
 
-  taskItems : TaskItem[] = [];
+  taskItems : TaskItem[] = []; // Array to store tasks
 
-  newTask : TaskItem = {
+  newTask : TaskItem = { // A new task object that can be added
     id: '',
     title:'',
     isDone:false,
     showTaskItem: true
   };
 
-  selectedTask : TaskItem = {
+  selectedTask : TaskItem = { // The selected task object that can be updated
     id: '',
     title:'',
     isDone:false,
@@ -35,11 +35,12 @@ export class TodoListComponent {
       // var date: Date = new Date(this.route.snapshot.params['date']);
       // console.log(date);
 
-      //**load saved Tasks */
+      // Load all tasks from the TaskService
       this.taskService.getAllTasks().subscribe((result) => {
         this.taskItems =result;
       });
 
+      //**load saved Tasks */
       this.activatedRoute.paramMap.subscribe({
         next: (params) =>{
           var id = params.get('id');
@@ -47,7 +48,7 @@ export class TodoListComponent {
           if(id){
             this.taskService.getTaskById(id).subscribe({
               next: (response) =>{
-                this.selectedTask = response;
+                this.selectedTask = response; // Set the selected task to the response from the TaskService
               }
             });
           }
@@ -56,26 +57,31 @@ export class TodoListComponent {
     }
 
     update(){
+      // Update the selected task through the TaskService
       this.taskService.updateTask(this.selectedTask.id, this.selectedTask).subscribe(()=>{
-        this.ngOnInit();
-      this.router.navigate(['todo']);
+        this.ngOnInit(); // Reload the tasks after the update
+      this.router.navigate(['todo']); // Navigate to the 'todo' route
       });
     }
 
     add(){
+      // Add a new task through the TaskService
       this.taskService.addTask(this.newTask).subscribe((result) =>{
         console.log(result)
-        this.taskItems.push(result);
+        this.taskItems.push(result); // Add the result to the taskItems array
       });
     }
 
 
   delete(id : string){
+    // Delete a task through the TaskService using the provided ID
     this.taskService.deleteTask(id).subscribe();
-    this.taskItems = this.taskItems.filter(t => t.id != id);
+    this.taskItems = this.taskItems.filter(t => t.id != id); // Remove the deleted task from the taskItems array
   }
 
   toggle(checkedTask : TaskItem){
+    // Update the status of a task (done or not) through the TaskService
+    // TODO
     this.taskService.toggleTask(checkedTask).subscribe();
     checkedTask.isDone = !checkedTask.isDone;
   }
