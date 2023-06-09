@@ -1,6 +1,6 @@
 using OfficeOrganizer.Data;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +13,13 @@ var connectionString = builder.Configuration.GetConnectionString("MyConnection")
 builder.Services.AddDbContext<ApplicationDbContext>(options =>{
     options.UseSqlServer(connectionString);
 });
+
+builder.Services.AddDbContext<AuthenticationDbContext>(options =>{
+    options.UseSqlServer(connectionString);
+});
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+.AddEntityFrameworkStores<AuthenticationDbContext>();
 
 
 var app = builder.Build();
@@ -29,6 +36,7 @@ app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin())
 app.UseStaticFiles();
 app.UseRouting();
 
+app.UseAuthentication();
 
 app.MapControllerRoute(
     name: "default",
