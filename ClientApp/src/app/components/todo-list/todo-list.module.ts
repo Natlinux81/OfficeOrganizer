@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TodoListComponent } from './todo-list.component';
 import {MatIconModule} from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
-import { AppRoutingModule } from '../app-routing.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 
 @NgModule({
