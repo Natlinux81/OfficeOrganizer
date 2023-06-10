@@ -1,5 +1,19 @@
+/* Global Styles */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html, body { height: 100%;
-background-color: #aeb7d9;}
+  background: linear-gradient(#b5b2d0, #aeb7d9, #c399a1, #8c617f, #463956);
+}
+
+html{
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;

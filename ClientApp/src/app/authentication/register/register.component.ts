@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
+import ValidateForm from 'src/app/shared/validateForm';
 
 @Component({
   selector: 'app-register',
@@ -8,10 +10,26 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
 
-  constructor(private router : Router){}
+  constructor(
+    private router : Router,
+    private formBuilder : FormBuilder ){}
 
-register(){
-  this.router.navigate(['todo'])
+
+registerForm = this.formBuilder.group({
+  username: ['' , Validators.required],
+  password: ['' , Validators.required],
+  confirmPassword: ['' , Validators.required],
+  terms: ['', Validators.required]
+});
+
+onSubmit(){
+  if (this.registerForm.valid) {
+    console.log(this.registerForm.value)
+    // Send the obj to database
+  } else{
+    // throw error
+    ValidateForm.validateAllFormFields(this.registerForm)
+  }
 }
 
 }

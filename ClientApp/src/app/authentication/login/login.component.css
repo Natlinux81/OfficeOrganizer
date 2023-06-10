@@ -3,14 +3,14 @@
 }
 
 .card{
-  background-color: #8c617f;
-}
-
-.form-control{
-  background-color: #b5b2d0;
+  background-color: rgb(238, 231, 231);;
 }
 
 .register-button{
   background-color: #463956;
   color: rgb(255, 255, 255)
+}
+
+.error{
+  border-color: red;
 }
