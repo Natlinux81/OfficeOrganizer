@@ -1,16 +1,1 @@
-.container {
-  margin-top: 6rem;
-}
-
-.card{
-  background-color: rgb(238, 231, 231);;
-}
-
-.register-button{
-  background-color: #463956;
-  color: rgb(255, 255, 255)
-}
-
-.error{
-  border-color: red;
-}
+@import url('../../../assets/css/common.css');
