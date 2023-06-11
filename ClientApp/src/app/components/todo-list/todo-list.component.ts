@@ -69,6 +69,7 @@ export class TodoListComponent {
       this.taskService.addTask(this.newTask).subscribe((result) =>{
         console.log(result)
         this.taskItems.push(result); // Add the result to the taskItems array
+
       });
     }
 

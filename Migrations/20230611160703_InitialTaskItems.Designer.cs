@@ -12,7 +12,7 @@ using OfficeOrganizer.Data;
 namespace OfficeOrganizer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230611134151_InitialTaskItems")]
+    [Migration("20230611160703_InitialTaskItems")]
     partial class InitialTaskItems
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

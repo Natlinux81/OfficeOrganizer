@@ -12,7 +12,7 @@ using OfficeOrganizer.Data;
 namespace OfficeOrganizer.Migrations.AuthenticationDb
 {
     [DbContext(typeof(AuthenticationDbContext))]
-    [Migration("20230611134236_InitialUser")]
+    [Migration("20230611160715_InitialUser")]
     partial class InitialUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,9 +29,6 @@ namespace OfficeOrganizer.Migrations.AuthenticationDb
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ConfirmPassword")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
