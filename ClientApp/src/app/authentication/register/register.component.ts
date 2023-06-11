@@ -19,9 +19,8 @@ export class RegisterComponent {
 
 registerForm = this.formBuilder.group({
   username: ['' , Validators.required],
-  email: ['' , Validators.required],
+  email: ['' , Validators.required], //Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
   password: ['' , Validators.required],
-  confirmPassword: ['' , Validators.required],
   terms: ['', Validators.required]
 });
 

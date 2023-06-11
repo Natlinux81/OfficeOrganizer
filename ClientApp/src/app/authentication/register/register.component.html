@@ -19,6 +19,7 @@
                 <span class="input-group-text"><mat-icon>mail</mat-icon></span>
                 <input type="email" formControlName="email" class="form-control" placeholder="E-Mail"
                   [class.error]="registerForm.controls['email'].dirty && registerForm.hasError('required' , 'email')">
+                  <!-- && registerForm.hasError ('pattern', '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$') -->
               </div>
               <small *ngIf="registerForm.controls['email'].dirty && registerForm.hasError('required' , 'email')"
                 class="text-danger">*Email is required</small>
@@ -30,16 +31,6 @@
               </div>
               <small *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required' , 'password')"
                 class="text-danger">*Password is required</small>
-              <!-- ConformPassword -->
-              <div class="input-group mt-5">
-                <span class="input-group-text"><mat-icon>vpn_key</mat-icon></span>
-                <input type="password" formControlName="confirmPassword" class="form-control"
-                  placeholder="Confirm Password"
-                  [class.error]="registerForm.controls['confirmPassword'].dirty && registerForm.hasError('required' , 'confirmPassword')">
-              </div>
-              <small
-                *ngIf="registerForm.controls['confirmPassword'].dirty && registerForm.hasError('required' , 'confirmPassword')"
-                class="text-danger">*Confirm Password is required</small>
               <!-- Checkbox Terms -->
               <div class="form-check d-flex justify-content-center mt-5">
                 <input formControlName="terms" class="form-check-input me-2" type="checkbox" value=""
