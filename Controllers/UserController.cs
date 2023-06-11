@@ -31,10 +31,15 @@ namespace OfficeOrganizer.Controllers
                 return BadRequest();  
                          
             var user = await _authenticationDbContext.Users
-            .FirstOrDefaultAsync(x => x.Username == userRequest.Username && x.Password == userRequest.Password);            
+            .FirstOrDefaultAsync(x => x.Username == userRequest.Username);            
 
             if (user == null)
                 return NotFound(new {Message = "User Not Found!"});
+
+            if(!PasswordHasher.VerifyPassword(userRequest.Password, user.Password))
+            {
+                return BadRequest(new {Message = "Wrong Password"});
+            }
 
             return Ok(new {Message = "Login Success!"});    
         } 
