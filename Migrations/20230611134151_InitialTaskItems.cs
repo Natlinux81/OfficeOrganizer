@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OfficeOrganizer.Migrations
 {
-    public partial class @new : Migration
+    public partial class InitialTaskItems : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -9,11 +9,11 @@ using OfficeOrganizer.Data;
 
 #nullable disable
 
-namespace OfficeOrganizer.Migrations
+namespace OfficeOrganizer.Migrations.AuthenticationDb
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230608215717_new")]
-    partial class @new
+    [DbContext(typeof(AuthenticationDbContext))]
+    [Migration("20230611134236_InitialUser")]
+    partial class InitialUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,21 +24,36 @@ namespace OfficeOrganizer.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("OfficeOrganizer.Models.TaskItem", b =>
+            modelBuilder.Entity("OfficeOrganizer.Models.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("IsDone")
+                    b.Property<string>("ConfirmPassword")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Terms")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("TaskItems");
+                    b.ToTable("users", (string)null);
                 });
 #pragma warning restore 612, 618
         }

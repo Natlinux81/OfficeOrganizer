@@ -4,13 +4,21 @@
 
 .card{
   background: linear-gradient(#b5b2d0, #aeb7d9, #c399a1, #8c617f, #463956);
+  border-radius: 12px;
+  box-shadow: 20px 20px 80px;
+}
+.error{
+  border-color: red;
 }
 
-.register-button{
+.btn{
+  border: 1px solid black;
   background-color: #463956;
   color: rgb(255, 255, 255)
 }
 
-.error{
-  border-color: red;
+.btn:hover{
+  background-color: #ece8e8;
+  color: black;
+
 }

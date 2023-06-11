@@ -1,50 +1,68 @@
-  <div class="d-flex align-items-center h-100">
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card" style="border-radius: 12px; box-shadow: 20px 20px 60px;">
-            <div class="card-body p-5">
-              <h1 class="text-center mb-5">Create an account</h1>
-
-              <form [formGroup]="registerForm">
-                <div class="input-group">
-                  <span class="input-group-text"><mat-icon>account_circle</mat-icon></span>
-                  <input type="text" formControlName="username" class="form-control" placeholder="Username" [class.error]="registerForm.controls['username'].dirty && registerForm.hasError('required' , 'username')">
-                </div>
-                  <small *ngIf="registerForm.controls['username'].dirty && registerForm.hasError('required' , 'username')" class="text-danger">*Username is required</small>
-                <div class="input-group mt-5">
-                  <span class="input-group-text"><mat-icon>lock</mat-icon></span>
-                  <input type="password" formControlName="password" class="form-control" placeholder="Password" [class.error]="registerForm.controls['password'].dirty && registerForm.hasError('required' , 'password')">
-                </div>
-                <small *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required' , 'password')" class="text-danger">*Password is required</small>
-                <div class="input-group mt-5">
-                  <span class="input-group-text"><mat-icon>vpn_key</mat-icon></span>
-                  <input type="password" formControlName="confirmPassword" class="form-control" placeholder="Confirm Password" [class.error]="registerForm.controls['confirmPassword'].dirty && registerForm.hasError('required' , 'confirmPassword')">
-                </div>
-                <small *ngIf="registerForm.controls['confirmPassword'].dirty && registerForm.hasError('required' , 'confirmPassword')" class="text-danger">*Confirm Password is required</small>
-                <div class="form-check d-flex justify-content-center mt-5">
-                  <input formControlName="terms" class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" [class.error]="registerForm.controls['terms'].dirty && registerForm.hasError('required' , 'terms')"/>
-                  <label class="form-check-label" for="form2Example3g">
-                    I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
-                  </label>
-                </div>
-                <div class="text-center">
-                  <small *ngIf="registerForm.controls['terms'].dirty && registerForm.hasError('required' , 'terms')" class="text-danger">*agree Terms required</small>
-                </div>
-
-                <div class="d-flex justify-content-center">
-                  <button (click)="onSubmit()" type="submit"
-                    class="btn btn-lg register-button mt-5">Sign up</button>
-                </div>
-
-                <p class="text-center text-black-50 mt-5 mb-0">Have already an account? <a [routerLink]="['/login']"
-                    class="fw-bold text-body"><u>Sign in here!</u></a></p>
-
-              </form>
-
-            </div>
+<div class="d-flex align-items-center h-100">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+        <div class="card">
+          <div class="card-body p-5">
+            <h1 class="text-center mb-5">Create an account</h1>
+            <form [formGroup]="registerForm">
+              <!-- Username -->
+              <div class="input-group">
+                <span class="input-group-text"><mat-icon>account_circle</mat-icon></span>
+                <input type="text" formControlName="username" class="form-control" placeholder="Username"
+                  [class.error]="registerForm.controls['username'].dirty && registerForm.hasError('required' , 'username')">
+              </div>
+              <small *ngIf="registerForm.controls['username'].dirty && registerForm.hasError('required' , 'username')"
+                class="text-danger">*Username is required</small>
+                  <!-- E-Mail -->
+              <div class="input-group mt-5">
+                <span class="input-group-text"><mat-icon>mail</mat-icon></span>
+                <input type="email" formControlName="email" class="form-control" placeholder="E-Mail"
+                  [class.error]="registerForm.controls['email'].dirty && registerForm.hasError('required' , 'email')">
+              </div>
+              <small *ngIf="registerForm.controls['email'].dirty && registerForm.hasError('required' , 'email')"
+                class="text-danger">*Email is required</small>
+              <!-- Password -->
+              <div class="input-group mt-5">
+                <span class="input-group-text"><mat-icon>lock</mat-icon></span>
+                <input type="password" formControlName="password" class="form-control" placeholder="Password"
+                  [class.error]="registerForm.controls['password'].dirty && registerForm.hasError('required' , 'password')">
+              </div>
+              <small *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required' , 'password')"
+                class="text-danger">*Password is required</small>
+              <!-- ConformPassword -->
+              <div class="input-group mt-5">
+                <span class="input-group-text"><mat-icon>vpn_key</mat-icon></span>
+                <input type="password" formControlName="confirmPassword" class="form-control"
+                  placeholder="Confirm Password"
+                  [class.error]="registerForm.controls['confirmPassword'].dirty && registerForm.hasError('required' , 'confirmPassword')">
+              </div>
+              <small
+                *ngIf="registerForm.controls['confirmPassword'].dirty && registerForm.hasError('required' , 'confirmPassword')"
+                class="text-danger">*Confirm Password is required</small>
+              <!-- Checkbox Terms -->
+              <div class="form-check d-flex justify-content-center mt-5">
+                <input formControlName="terms" class="form-check-input me-2" type="checkbox" value=""
+                  id="form2Example3cg"
+                  [class.error]="registerForm.controls['terms'].dirty && registerForm.hasError('required' , 'terms')" />
+                <label class="form-check-label" for="form2Example3g">
+                  I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                </label>
+              </div>
+              <div class="text-center">
+                <small *ngIf="registerForm.controls['terms'].dirty && registerForm.hasError('required' , 'terms')"
+                  class="text-danger">*agree Terms required</small>
+              </div>
+              <!-- Button -->
+              <div class="d-flex justify-content-center">
+                <button (click)="onSubmit()" type="submit" class="btn btn-lg mt-5">Sign up</button>
+              </div>
+              <p class="text-center text-black-50 mt-5 mb-0">Have already an account? <a [routerLink]="['/login']"
+                  class="fw-bold text-body"><u>Sign in here!</u></a></p>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
