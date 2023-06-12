@@ -78,7 +78,7 @@ namespace OfficeOrganizer.Controllers
         private Task<bool> CheckEmailExistAsync(string email)
         => _authenticationDbContext.Users.AnyAsync(x => x.Email == email);
 
-        private string CheckPasswordStrength(string password)
+        private static string CheckPasswordStrength(string password)
         {
             StringBuilder sb = new StringBuilder();
             if (password.Length < 8)

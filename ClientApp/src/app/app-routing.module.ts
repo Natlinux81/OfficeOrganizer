@@ -9,7 +9,7 @@ import { LoginComponent } from './authentication/login/login.component';
 
 const routes: Routes = [
   //{component: CalendarComponent, path: ''},
-  { path: '', component:RegisterComponent, pathMatch: 'full' },
+  { path: '', component:HomeComponent, pathMatch: 'full' },
   {component: TodoListComponent, path: 'todo'},
   {component: TodoListComponent, path: 'todo/edit/:id'},
   {component: RegisterComponent, path: 'register'},

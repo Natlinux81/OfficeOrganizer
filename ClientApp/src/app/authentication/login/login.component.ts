@@ -11,6 +11,10 @@ import { AuthenticateService } from 'src/app/service/authenticate.service';
 })
 export class LoginComponent {
 
+  type: string = "password";
+  isText: boolean = true;
+  eyeIcon: string = ""
+
   constructor(
     private router : Router,
     private formBuilder : FormBuilder,
@@ -41,5 +45,11 @@ export class LoginComponent {
         // throw error
         ValidateForm.validateAllFormFields(this.loginForm)
       }
+    }
+    hideShowPassword(){
+      //**TODO image not change
+      this.isText = !this.isText;
+      this.eyeIcon ? this.eyeIcon = "bi bi-eye" : this.eyeIcon = "bi bi -eye-slash";
+      this.isText ? this.type = "text" : this.type = "password";
     }
 }
