@@ -20,4 +20,16 @@ export class AuthenticateService {
     var response = this.httpClient.post<any>(this.authenticateUrl + 'authenticate',userRequest);
     return response;
   }
+
+  storeToken(tokenValue : string){
+    return localStorage.setItem('token', tokenValue)
+  }
+
+  getToken(){
+    return localStorage.getItem('token')
+  }
+
+  isLoggedIn(): boolean{
+    return !!localStorage.getItem('token')
+  }
 }

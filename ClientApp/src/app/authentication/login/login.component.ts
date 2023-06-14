@@ -26,6 +26,12 @@ export class LoginComponent {
       password: ['' , Validators.required],
     });
 
+    hideShowPassword(){
+      this.isText = !this.isText;
+      this.isText ? this.eyeIcon = "bi-eye" : this.eyeIcon = "bi-eye-slash";
+      this.isText ? this.type = "text" : this.type = "password";
+    }
+
     onSignIn(){
       if (this.loginForm.valid) {
         console.log(this.loginForm.value)
@@ -34,7 +40,8 @@ export class LoginComponent {
           next:(result) => {
             alert(result.message)
             this.loginForm.reset();
-            this.router.navigate(['/todo'])
+            this.authenticateService.storeToken(result.token);
+            this.router.navigate(['todo'])
           },
           error:(err) =>{
             alert(err?.error.message)
@@ -46,10 +53,5 @@ export class LoginComponent {
         ValidateForm.validateAllFormFields(this.loginForm)
       }
     }
-    hideShowPassword(){
-      //**TODO image not change
-      this.isText = !this.isText;
-      this.isText ? this.eyeIcon = "bi-eye" : this.eyeIcon = "bi-eye-slash";
-      this.isText ? this.type = "text" : this.type = "password";
-    }
+
 }
