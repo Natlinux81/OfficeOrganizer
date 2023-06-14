@@ -8,18 +8,29 @@
     box-sizing: border-box;
 }
 
+// custom variables
+
+$primary: #9485c0;
+$success: #d395b5;
+$secondary: #71b7c4;
+$light: #c7c7c7;
+
+// import bootstrap
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+
 html, body { height: 100%;
-  background: #ece8e8;
 }
 
-html{
-  scroll-behavior: smooth;
-}
+
 
 body {
   margin: 0;
+  padding-top: 3rem;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #c7c7c7;
 }
+
 
 
 /* #b5b2d0, #aeb7d9, #c399a1, #8c617f, #463956 */

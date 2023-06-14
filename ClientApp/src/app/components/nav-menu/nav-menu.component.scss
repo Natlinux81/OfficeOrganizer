@@ -2,6 +2,7 @@ a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+  cursor: pointer;
 }
 
 html {
@@ -13,23 +14,19 @@ html {
   margin-right: 1rem;
 }
 
-a {
+.nav-link {
   outline: none;
   text-decoration: none;
   padding: 2px 1px 0;
 }
 
 a:link {
-  color: blue;
+  color: black;
 }
 
-a:visited {
+.nav-link:focus,
+.nav-link:hover {
   color: white;
-}
-
-a:focus,
-a:hover {
-  border-bottom: 1px solid;
 }
 
 

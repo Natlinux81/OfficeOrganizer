@@ -1,10 +1,10 @@
 <header>
   <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 fixed-top" style="background-color: #463956"
+    class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 fixed-top bg-primary"
   >
     <div class="container">
       <img class="logo" src="../../../assets/images/OfficeOrganizerLogo.png">
-      <a class="navbar-brand" style="color: white;">OfficeOrganizer</a>
+      <a class="navbar-brand" [routerLink]="['/']">OfficeOrganizer</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -30,6 +30,12 @@
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link" [routerLink]="['/todo']">ToDo</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link" [routerLink]="['/register']">Sign Up</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link" [routerLink]="['/login']">Sign In</a>
           </li>
         </ul>
       </div>
