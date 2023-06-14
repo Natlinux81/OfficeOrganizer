@@ -19,7 +19,7 @@
                 <span class="input-group-text"><mat-icon>lock</mat-icon></span>
                 <input [type]="type" formControlName="password" class="form-control" placeholder="Password"
                   [class.error]="loginForm.controls['password'].dirty && loginForm.hasError('required' , 'password')">
-                  <span (click)="hideShowPassword()" class="input-group-text"><i class="bi bi-eye-slash"></i></span>
+                  <span (click)="hideShowPassword()" class="input-group-text"><i class="bi {{eyeIcon}}"></i></span>
               </div>
               <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required' , 'password')"
                 class="text-danger">*Password is required</small>

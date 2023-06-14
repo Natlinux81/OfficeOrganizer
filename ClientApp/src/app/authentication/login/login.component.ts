@@ -13,7 +13,7 @@ export class LoginComponent {
 
   type: string = "password";
   isText: boolean = true;
-  eyeIcon: string = ""
+  eyeIcon: string = "bi-eye-slash"
 
   constructor(
     private router : Router,
@@ -49,7 +49,7 @@ export class LoginComponent {
     hideShowPassword(){
       //**TODO image not change
       this.isText = !this.isText;
-      this.eyeIcon ? this.eyeIcon = "bi bi-eye" : this.eyeIcon = "bi bi -eye-slash";
+      this.isText ? this.eyeIcon = "bi-eye" : this.eyeIcon = "bi-eye-slash";
       this.isText ? this.type = "text" : this.type = "password";
     }
 }
