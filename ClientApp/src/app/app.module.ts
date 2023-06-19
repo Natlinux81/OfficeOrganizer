@@ -10,7 +10,7 @@ import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './service/in-memory-data.service';
+import { InMemoryDataService } from './services/in-memory-data.service';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 
 

@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import ValidateForm from 'src/app/shared/validateForm';
-import { AuthenticateService } from 'src/app/service/authenticate.service';
+import { AuthenticateService } from 'src/app/services/authenticate.service';
+import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent {
   constructor(
     private router : Router,
     private formBuilder : FormBuilder,
-    private authenticateService : AuthenticateService) {}
+    private authenticateService : AuthenticateService,
+    private userStore : UserStoreService) {}
 
 
     loginForm = this.formBuilder.group({
@@ -38,9 +40,12 @@ export class LoginComponent {
         // Send the obj to database
         this.authenticateService.signIn(this.loginForm.value).subscribe({
           next:(result) => {
-            alert(result.message)
             this.loginForm.reset();
             this.authenticateService.storeToken(result.token);
+            const tokenPayload = this.authenticateService.decodedToken();
+            this.userStore.setUsernameForStore(tokenPayload.name);
+            this.userStore.setRoleForStore(tokenPayload.role);
+            alert(result.message)
             this.router.navigate(['todo'])
           },
           error:(err) =>{

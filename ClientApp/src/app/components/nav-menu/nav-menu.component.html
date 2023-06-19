@@ -37,9 +37,11 @@
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link" [routerLink]="['/login']">Sign In</a>
           </li>
+          <!-- //ToDo -->
+         <ng-container *ngIf="true" >
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
+            {{username}}
             </a>
             <ul class="dropdown-menu">
             <li><a (click)="logOut()" class="dropdown-item" data-bs-theme="light">Log out</a></li>
@@ -47,6 +49,7 @@
             <li><a class="dropdown-item">Something else here</a></li>
             </ul>
             </li>
+         </ng-container>
         </ul>
       </div>
     </div>

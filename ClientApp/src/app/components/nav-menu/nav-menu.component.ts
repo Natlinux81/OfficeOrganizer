@@ -1,16 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Dropdown} from 'bootstrap'
-import { AuthenticateService } from 'src/app/service/authenticate.service';
+import { AuthenticateService } from 'src/app/services/authenticate.service';
+import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
   selector: 'app-nav-menu',
   templateUrl: './nav-menu.component.html',
   styleUrls: ['./nav-menu.component.scss']
 })
-export class NavMenuComponent {
+export class NavMenuComponent implements OnInit {
   isExpanded = false;
+  public username : string = "";
 
-  constructor(private authenticateService : AuthenticateService){}
+  constructor(
+    private authenticateService : AuthenticateService,
+    private userStore : UserStoreService){}
+
+  ngOnInit(){
+    this.userStore.getUsernameFromStore()
+    .subscribe(val =>{
+      let usernameFromToken = this.authenticateService.getUsernameFromToken();
+      this.username = val || usernameFromToken
+    })
+  }
 
   collapse() {
     this.isExpanded = false;

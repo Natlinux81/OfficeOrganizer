@@ -2,15 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticateService {
 
-  constructor(private httpClient : HttpClient, private router : Router) { }
+  private authenticateUrl = environment.authenticateUrl
 
-  authenticateUrl = environment.authenticateUrl
+  private userPayload:any;
+
+  constructor(private httpClient : HttpClient, private router : Router) {
+    this.userPayload = this.decodedToken();
+  }
 
   signUp(userRequest : any){
     var response = this.httpClient.post<any>(this.authenticateUrl + 'register',userRequest);
@@ -37,5 +42,22 @@ export class AuthenticateService {
 
   isLoggedIn(): boolean{
     return !!localStorage.getItem('token')
+  }
+
+  decodedToken(){
+    const jwtHelper = new JwtHelperService();
+    const token = this.getToken()!;
+    console.log(jwtHelper.decodeToken(token))
+    return jwtHelper.decodeToken(token)
+  }
+
+  getUsernameFromToken(){
+    if(this.userPayload)
+    return this.userPayload.name;
+  }
+
+  getRoleFromToken(){
+    if(this.userPayload)
+    return this.userPayload.role;
   }
 }
