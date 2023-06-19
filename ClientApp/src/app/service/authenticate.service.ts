@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthenticateService {
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(private httpClient : HttpClient, private router : Router) { }
 
   authenticateUrl = environment.authenticateUrl
 
@@ -19,6 +20,11 @@ export class AuthenticateService {
   signIn(userRequest : any){
     var response = this.httpClient.post<any>(this.authenticateUrl + 'authenticate',userRequest);
     return response;
+  }
+
+  signOut(){
+    localStorage.clear();
+    this.router.navigate(['login'])
   }
 
   storeToken(tokenValue : string){

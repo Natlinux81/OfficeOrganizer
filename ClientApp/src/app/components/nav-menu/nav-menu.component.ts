@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Dropdown} from 'bootstrap'
+import { AuthenticateService } from 'src/app/service/authenticate.service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -8,6 +10,8 @@ import { Component } from '@angular/core';
 export class NavMenuComponent {
   isExpanded = false;
 
+  constructor(private authenticateService : AuthenticateService){}
+
   collapse() {
     this.isExpanded = false;
   }
@@ -15,4 +19,13 @@ export class NavMenuComponent {
   toggle() {
     this.isExpanded = !this.isExpanded;
   }
+
+  dropdown(dropdown : any){
+    const modal = new Dropdown(dropdown);
+    modal.toggle();
+    }
+
+    logOut(){
+    this.authenticateService.signOut();
+    }
 }
