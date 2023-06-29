@@ -41,7 +41,8 @@ export class LoginComponent {
         this.authenticateService.signIn(this.loginForm.value).subscribe({
           next:(result) => {
             this.loginForm.reset();
-            this.authenticateService.storeToken(result.token);
+            this.authenticateService.storeToken(result.accessToken);
+            this.authenticateService.storeRefreshToken(result.refreshToken)
             const tokenPayload = this.authenticateService.decodedToken();
             this.userStore.setUsernameForStore(tokenPayload.name);
             this.userStore.setRoleForStore(tokenPayload.role);
