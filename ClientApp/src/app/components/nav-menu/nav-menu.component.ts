@@ -19,7 +19,7 @@ export class NavMenuComponent implements OnInit {
   ngOnInit(){
     this.userStore.getUsernameFromStore()
     .subscribe(val =>{
-      let usernameFromToken = this.authenticateService.getUsernameFromToken();
+      const usernameFromToken = this.authenticateService.getUsernameFromToken();
       this.username = val || usernameFromToken
     })
   }

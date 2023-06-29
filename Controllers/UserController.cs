@@ -15,6 +15,7 @@ using OfficeOrganizer.helper;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using OfficeOrganizer.Models.Dto;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OfficeOrganizer.Controllers
 {
@@ -27,7 +28,13 @@ namespace OfficeOrganizer.Controllers
         public UserController(AuthenticationDbContext authenticationDbContext)
         {
             _authenticationDbContext = authenticationDbContext;
-        }   
+        }  
+
+        [Authorize] 
+        [HttpGet]
+        public async Task<ActionResult<User>> GetAllUsers(){
+            return Ok(await _authenticationDbContext.Users.ToListAsync());
+        }
 
         [HttpPost("authenticate")]
         public async Task<IActionResult>Authenticate([FromBody] User userRequest)

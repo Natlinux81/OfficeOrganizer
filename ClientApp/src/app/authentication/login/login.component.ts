@@ -36,7 +36,7 @@ export class LoginComponent {
 
     onSignIn(){
       if (this.loginForm.valid) {
-        console.log(this.loginForm.value)
+
         // Send the obj to database
         this.authenticateService.signIn(this.loginForm.value).subscribe({
           next:(result) => {
@@ -46,8 +46,7 @@ export class LoginComponent {
             const tokenPayload = this.authenticateService.decodedToken();
             this.userStore.setUsernameForStore(tokenPayload.name);
             this.userStore.setRoleForStore(tokenPayload.role);
-
-            this.router.navigate(['todo'])
+            this.router.navigate(['dashboard'])
           },
           error:(err) =>{
             alert(err?.error.message)

@@ -18,6 +18,10 @@ export class AuthenticateService {
     this.userPayload = this.decodedToken();
   }
 
+  getAllUsers(){
+    return this.httpClient.get<any>(this.authenticateUrl);
+  }
+
   signUp(userRequest : any){
     var response = this.httpClient.post<any>(this.authenticateUrl + 'register',userRequest);
     return response;
