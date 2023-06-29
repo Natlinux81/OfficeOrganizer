@@ -10,5 +10,6 @@ namespace OfficeOrganizer.Models
         public Guid Id { get; set; }
         public string Title { get; set; }
         public bool IsDone { get; set; }
+        public string Owner { get; set;}        
     }
 }

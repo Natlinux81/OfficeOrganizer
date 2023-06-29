@@ -26,19 +26,19 @@
             [routerLinkActive]="['link-active']"
             [routerLinkActiveOptions]="{ exact: true }"
           >
-            <a class="nav-link" [routerLink]="['/']">Home</a>
+            <a class="nav-link" *ngIf="loginStatus" [routerLink]="['/dashboard']">Dashboard</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link" [routerLink]="['/todo']">ToDo</a>
+            <a class="nav-link" *ngIf="loginStatus" [routerLink]="['/todo']">ToDo</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link" [routerLink]="['/register']">Sign Up</a>
+            <a class="nav-link" *ngIf="!loginStatus" [routerLink]="['/register']">Sign Up</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link" [routerLink]="['/login']">Sign In</a>
           </li>
           <!-- //ToDo -->
-         <ng-container *ngIf="true" >
+         <ng-container *ngIf="loginStatus" >
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {{username}}

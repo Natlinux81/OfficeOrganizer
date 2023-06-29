@@ -36,7 +36,9 @@ namespace OfficeOrganizer.Controllers
             taskItemRequest.Id = Guid.NewGuid();
             await _applicationDbContext.TaskItems.AddAsync(taskItemRequest);
             await _applicationDbContext.SaveChangesAsync();
+            
             return Ok(taskItemRequest);
+            
         }
 
         [HttpGet]

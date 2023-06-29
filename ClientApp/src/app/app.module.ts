@@ -10,8 +10,6 @@ import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './services/in-memory-data.service';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 
 
@@ -28,7 +26,6 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     AuthenticationModule,
     TodoListModule,
     CalendarModule,
-    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation:false}),
     AppRoutingModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:TokenInterceptor, multi:true}],

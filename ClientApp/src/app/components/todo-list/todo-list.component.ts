@@ -16,6 +16,7 @@ export class TodoListComponent {
     id: '',
     title:'',
     isDone:false,
+    owner: '',
     showTaskItem: true
   };
 
@@ -23,6 +24,7 @@ export class TodoListComponent {
     id: '',
     title:'',
     isDone:false,
+    owner: '',
     showTaskItem: true
   };
 

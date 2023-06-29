@@ -11,6 +11,7 @@ import { UserStoreService } from 'src/app/services/user-store.service';
 export class NavMenuComponent implements OnInit {
   isExpanded = false;
   public username : string = "";
+  public loginStatus : boolean = false
 
   constructor(
     private authenticateService : AuthenticateService,
@@ -21,6 +22,8 @@ export class NavMenuComponent implements OnInit {
     .subscribe(val =>{
       const usernameFromToken = this.authenticateService.getUsernameFromToken();
       this.username = val || usernameFromToken
+
+      this.loginStatus = this.authenticateService.isLoggedIn();
     })
   }
 
@@ -38,6 +41,7 @@ export class NavMenuComponent implements OnInit {
     }
 
     logOut(){
-    this.authenticateService.signOut();
+      this.loginStatus = false;
+      this.authenticateService.signOut();
     }
 }
