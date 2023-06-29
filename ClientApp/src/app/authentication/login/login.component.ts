@@ -46,7 +46,7 @@ export class LoginComponent {
             const tokenPayload = this.authenticateService.decodedToken();
             this.userStore.setUsernameForStore(tokenPayload.name);
             this.userStore.setRoleForStore(tokenPayload.role);
-            alert(result.message)
+
             this.router.navigate(['todo'])
           },
           error:(err) =>{
