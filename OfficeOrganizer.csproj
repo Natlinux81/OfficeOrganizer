@@ -7,6 +7,7 @@
     <SpaProxyServerUrl>https://localhost:44491</SpaProxyServerUrl>
     <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
     <ImplicitUsings>enable</ImplicitUsings>
+    <NoWarn>$(NoWarn);SYSLIB0023</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="6.0.16"/>
