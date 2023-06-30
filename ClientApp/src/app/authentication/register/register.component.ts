@@ -10,6 +10,7 @@ import { AuthenticateService } from 'src/app/services/authenticate.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
 
   constructor(
     private router : Router,
@@ -18,8 +19,8 @@ export class RegisterComponent {
 
 
 registerForm = this.formBuilder.group({
-  username: ['' , Validators.required],
-  email: ['' , Validators.required], //Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
+  username: ['' , [Validators.required, Validators.minLength(3)]],
+  email: ['' , [Validators.required, Validators.pattern(this.emailPattern)]],
   password: ['' , Validators.required],
   terms: ['', Validators.required]
 });

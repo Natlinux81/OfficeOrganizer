@@ -47,6 +47,7 @@ namespace OfficeOrganizer.Controllers
 
             if (user == null)
                 return NotFound(new {Message = "User Not Found!"});
+                
 
             if(!PasswordHasher.VerifyPassword(userRequest.Password, user.Password))
             {

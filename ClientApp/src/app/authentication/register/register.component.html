@@ -12,17 +12,17 @@
                 <input type="text" formControlName="username" class="form-control" placeholder="Username"
                   [class.error]="registerForm.controls['username'].dirty && registerForm.hasError('required' , 'username')">
               </div>
-              <small *ngIf="registerForm.controls['username'].dirty && registerForm.hasError('required' , 'username')"
-                class="text-danger">*Username is required</small>
+              <small *ngIf="registerForm.controls['username'].dirty && registerForm.hasError('minlength' , 'username')"
+                class="text-danger">*Username to short!</small>
                   <!-- E-Mail -->
               <div class="input-group mt-5">
                 <span class="input-group-text"><mat-icon>mail</mat-icon></span>
                 <input type="email" formControlName="email" class="form-control" placeholder="E-Mail"
-                  [class.error]="registerForm.controls['email'].dirty && registerForm.hasError('required' , 'email')">
-                  <!-- && registerForm.hasError ('pattern', '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$') -->
+                  [class.error]="registerForm.controls['email'].dirty && registerForm.hasError('required' , 'email' )">
               </div>
-              <small *ngIf="registerForm.controls['email'].dirty && registerForm.hasError('required' , 'email')"
-                class="text-danger">*Email is required</small>
+              <small *ngIf="registerForm.controls['email'].dirty && registerForm.hasError('pattern' , 'email')"
+                class="text-danger">*invalid E-Mail</small>
+
               <!-- Password -->
               <div class="input-group mt-5">
                 <span class="input-group-text"><mat-icon>lock</mat-icon></span>
@@ -46,7 +46,7 @@
               </div>
               <!-- Button -->
               <div class="d-flex justify-content-center">
-                <button (click)="onSignUp()" type="submit" class="btn btn-lg btn-light mt-5">Sign up</button>
+                <button [disabled]="registerForm.invalid" (click)="onSignUp()" type="submit" class="btn btn-lg btn-light mt-5">Sign up</button>
               </div>
               <p class="text-center text-black-50 mt-5 mb-0">Have already an account? <a [routerLink]="['/login']"
                   class="fw-bold text-body"><u>Sign in here!</u></a></p>
