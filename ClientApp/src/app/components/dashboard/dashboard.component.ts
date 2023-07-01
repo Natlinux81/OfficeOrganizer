@@ -10,10 +10,13 @@ import { UserStoreService } from 'src/app/services/user-store.service';
 export class DashboardComponent {
   public users:any = [];
   public role! : string;
+  public username : string = "";
 
   constructor(private authenticateService : AuthenticateService, private userStore: UserStoreService){}
 
   ngOnInit(){
+
+
     this.authenticateService.getAllUsers().subscribe(res =>{
       this.users = res;
     });
@@ -21,7 +24,13 @@ export class DashboardComponent {
     this.userStore.getRoleFromStore().subscribe(val=>{
       const roleFromToken = this.authenticateService.getRoleFromToken();
       this.role = val || roleFromToken
-    })
-  }
+    });
+
+    this.userStore.getUsernameFromStore()
+    .subscribe(val =>{
+      const usernameFromToken = this.authenticateService.getUsernameFromToken();
+      this.username = val || usernameFromToken
+  });
+}
 
 }

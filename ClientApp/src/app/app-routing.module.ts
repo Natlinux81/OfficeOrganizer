@@ -10,9 +10,9 @@ import { AuthenticationGuard } from './guards/authentication.guard';
 
 
 const routes: Routes = [
-  //{component: CalendarComponent, path: ''},
   { path: '', component:HomeComponent, pathMatch: 'full' },
   {component: DashboardComponent, path: 'dashboard', canActivate: [AuthenticationGuard]},
+  {component: CalendarComponent, path: 'calendar' ,canActivate: [AuthenticationGuard]},
   {component: TodoListComponent, path: 'todo' , canActivate: [AuthenticationGuard]},
   {component: TodoListComponent, path: 'todo/edit/:id'},
   {component: RegisterComponent, path: 'register'},
