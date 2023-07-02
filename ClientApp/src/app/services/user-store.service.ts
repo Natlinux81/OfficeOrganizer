@@ -5,19 +5,11 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class UserStoreService {
-  public loginStatus$ = new BehaviorSubject<boolean>(this.checkLoginStatus());
+
   private username$ = new BehaviorSubject<string>("");
   private role$ = new BehaviorSubject<string>("");
 
   constructor() { }
-
-  public checkLoginStatus(): boolean{
-    return false;
-  }
-
-  public isLoggedIn(){
-    return this.loginStatus$.asObservable();
-  }
 
   public getRoleFromStore(){
     return this.role$.asObservable();

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TaskItem } from 'src/app/shared/task-item';
 import { TaskService } from 'src/app/services/task.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserStoreService } from 'src/app/services/user-store.service';
+import { AuthenticateService } from 'src/app/services/authenticate.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -11,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class TodoListComponent {
 
   taskItems : TaskItem[] = []; // Array to store tasks
+  taskOwner: string = ""
 
   newTask : TaskItem = { // A new task object that can be added
     id: '',
@@ -30,7 +33,9 @@ export class TodoListComponent {
 
   constructor(private taskService : TaskService,
               private activatedRoute : ActivatedRoute,
-              private router : Router) {}
+              private router : Router,
+              private userStore : UserStoreService,
+              private authenticateService : AuthenticateService) {}
 
   ngOnInit(): void{
       //** datepicker */
@@ -39,8 +44,9 @@ export class TodoListComponent {
 
       // Load all tasks from the TaskService
       this.taskService.getAllTasks().subscribe((result) => {
-        this.taskItems =result;
+        this.taskItems =result.filter(x => x.owner == this.taskOwner)
       });
+
 
       //**load saved Tasks */
       this.activatedRoute.paramMap.subscribe({
@@ -55,14 +61,23 @@ export class TodoListComponent {
             });
           }
         }
+      });
+      // Set Owner = Username
+      this.userStore.getUsernameFromStore()
+      .subscribe(val =>{
+        const usernameFromToken = this.authenticateService.getUsernameFromToken();
+        this.newTask.owner = val || usernameFromToken
+        this.taskOwner = val || usernameFromToken
       })
     }
+
 
     update(){
       // Update the selected task through the TaskService
       this.taskService.updateTask(this.selectedTask.id, this.selectedTask).subscribe(()=>{
         this.ngOnInit(); // Reload the tasks after the update
       this.router.navigate(['todo']); // Navigate to the 'todo' route
+      console.log(this.selectedTask)
       });
     }
 
@@ -74,7 +89,6 @@ export class TodoListComponent {
 
       });
     }
-
 
   delete(id : string){
     // Delete a task through the TaskService using the provided ID
