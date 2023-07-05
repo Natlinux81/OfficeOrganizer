@@ -1,6 +1,11 @@
-import { Component , OnInit } from '@angular/core';
+import { Component , OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { AuthenticateService } from 'src/app/services/authenticate.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
+
+
 
 @Component({
   selector: 'app-dashboard',
@@ -8,17 +13,22 @@ import { UserStoreService } from 'src/app/services/user-store.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  public users:any = [];
+  public users: any = [];
   public role! : string;
   public username : string = "";
+  public displayedColumns : string[] =["No.", "Username" ,"E-Mail" , "Role"]
+
+
+  @ViewChild(MatSort) sort!: MatSort
+  @ViewChild(MatPaginator) paginator!: MatPaginator
 
   constructor(private authenticateService : AuthenticateService, private userStore: UserStoreService){}
 
-  ngOnInit(){
-
-
-    this.authenticateService.getAllUsers().subscribe(res =>{
-      this.users = res;
+  ngOnInit(): void{
+    this.authenticateService.getAllUsers().subscribe((res) =>{
+      this.users = new MatTableDataSource( res);
+      this.users.paginator = this.paginator;
+      this.users.sort = this.sort;
     });
 
     this.userStore.getRoleFromStore().subscribe(val=>{
@@ -32,5 +42,14 @@ export class DashboardComponent {
       this.username = val || usernameFromToken
   });
 }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.users.filter = filterValue.trim().toLowerCase()
+
+    if(this.users.paginator) {
+      this.users.paginator.firstPage();
+    }
+  }
 
 }
