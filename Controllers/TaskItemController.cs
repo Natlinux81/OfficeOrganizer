@@ -65,6 +65,7 @@ namespace OfficeOrganizer.Controllers
             return NotFound();
           }
           taskItem.Title = updateTaskItem.Title;
+          taskItem.IsDone = updateTaskItem.IsDone;
 
           await _applicationDbContext.SaveChangesAsync();
           return Ok(taskItem);

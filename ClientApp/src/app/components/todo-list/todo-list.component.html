@@ -17,7 +17,7 @@
     <li class="list-group-item d-flex" *ngFor="let taskItem of taskItems; let i = index" [class.even]="i%2==0"
       [class.odd]="i%2">
       <div class="me-auto p-2">
-        <input [(ngModel)]="taskItem.isDone" (click)="toggle(taskItem)" class="checkbox form-check-input me-2"
+        <input [checked]="taskItem.isDone" (change)="toggle(taskItem)" class="checkbox form-check-input me-2"
           type="checkbox" value="" id="firstCheckbox">
         <label class="form-check-label" [class.is-done]="taskItem.isDone">{{taskItem.title}}</label>
       </div>

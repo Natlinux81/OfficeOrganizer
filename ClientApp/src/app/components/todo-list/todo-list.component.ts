@@ -47,7 +47,6 @@ export class TodoListComponent {
         this.taskItems =result.filter(x => x.owner == this.taskOwner)
       });
 
-
       //**load saved Tasks */
       this.activatedRoute.paramMap.subscribe({
         next: (params) =>{
@@ -62,6 +61,7 @@ export class TodoListComponent {
           }
         }
       });
+
       // Set Owner = Username
       this.userStore.getUsernameFromStore()
       .subscribe(val =>{
@@ -71,11 +71,16 @@ export class TodoListComponent {
       })
     }
 
+    getAllTasks(){
+      this.taskService.getAllTasks().subscribe((result) => {
+        this.taskItems =result.filter(x => x.owner == this.taskOwner)
+      });
+    }
 
     update(){
       // Update the selected task through the TaskService
       this.taskService.updateTask(this.selectedTask.id, this.selectedTask).subscribe(()=>{
-        this.ngOnInit(); // Reload the tasks after the update
+        this.getAllTasks(); // Reload the tasks after the update
       this.router.navigate(['todo']); // Navigate to the 'todo' route
       console.log(this.selectedTask)
       });
@@ -98,9 +103,11 @@ export class TodoListComponent {
 
   toggle(checkedTask : TaskItem){
     // Update the status of a task (done or not) through the TaskService
-    // TODO
-    this.taskService.toggleTask(checkedTask).subscribe();
     checkedTask.isDone = !checkedTask.isDone;
+    this.taskService.updateTask(checkedTask.id, checkedTask).subscribe(() =>{
+      this.getAllTasks();
+    });
+    console.log(checkedTask)
   }
 }
 
