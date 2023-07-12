@@ -17,5 +17,7 @@
         "Hasher",
         "Hsts",
         "natlinux"
-    ]
+    ],
+    "cSpell.caseSensitive": false,
+    "cSpell.language": "en, de-de"
 }

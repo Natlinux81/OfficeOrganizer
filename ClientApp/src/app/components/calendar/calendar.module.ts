@@ -5,8 +5,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { RouterModule } from '@angular/router';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
 
-
+// FullCalendarModule.registerPlugins([
+//   dayGridPlugin,
+//   interactionPlugin
+// ]);
 
 @NgModule({
   declarations: [
@@ -17,7 +23,8 @@ import { RouterModule } from '@angular/router';
     BrowserAnimationsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    RouterModule
+    RouterModule,
+    FullCalendarModule
   ],
   exports: [
     CalendarComponent
