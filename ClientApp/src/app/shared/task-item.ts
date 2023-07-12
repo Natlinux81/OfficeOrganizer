@@ -7,5 +7,5 @@ export class TaskItem{
 
   public isDone = false;
 
-  public showTaskItem = true;
+
 }

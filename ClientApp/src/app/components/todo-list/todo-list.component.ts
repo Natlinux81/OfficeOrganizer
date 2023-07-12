@@ -1,9 +1,10 @@
-import { Component} from '@angular/core';
+import { Component, ViewChild} from '@angular/core';
 import { TaskItem } from 'src/app/shared/task-item';
 import { TaskService } from 'src/app/services/task.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserStoreService } from 'src/app/services/user-store.service';
 import { AuthenticateService } from 'src/app/services/authenticate.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-list',
@@ -19,17 +20,17 @@ export class TodoListComponent {
     id: '',
     title:'',
     isDone:false,
-    owner: '',
-    showTaskItem: true
+    owner: ''
   };
 
   selectedTask : TaskItem = { // The selected task object that can be updated
     id: '',
     title:'',
     isDone:false,
-    owner: '',
-    showTaskItem: true
+    owner: ''
   };
+
+  @ViewChild('FormAdd', { static: false }) formAdd!: NgForm;
 
   constructor(private taskService : TaskService,
               private activatedRoute : ActivatedRoute,
@@ -91,7 +92,7 @@ export class TodoListComponent {
       this.taskService.addTask(this.newTask).subscribe((result) =>{
         console.log(result)
         this.taskItems.push(result); // Add the result to the taskItems array
-
+        this.formAdd.reset();
       });
     }
 
