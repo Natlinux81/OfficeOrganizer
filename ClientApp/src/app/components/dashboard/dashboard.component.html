@@ -32,34 +32,40 @@
   <div class="col-lg-8">
     <div class="row mb-2">
       <div class="col-md-6">
-        <div class="card mb-3 bg bg-secondary">
-          <div class="card-body text-center">
-            <h1 class="mb-4" style="font-size: 38px;">Einnahmen</h1>
-            <p class="mb-1" style="font-size: 28px;">2500,- €</p>
-          </div>
-        </div>
+<a class="text-decoration-none" [routerLink]="['/earnings']">
+  <div class="card mb-3 bg bg-secondary">
+    <div class="card-body text-center">
+      <h1 class="mb-4" style="font-size: 38px;">Einnahmen</h1>
+      <p class="mb-1" style="font-size: 28px;">2500,- €</p>
+    </div>
+  </div>
+</a>
       </div>
       <div class="col-md-6">
-        <div class="card mb-3 bg bg-success">
-          <div class="card-body text-center">
-            <h1 class="mb-4" style="font-size: 38px;">Ausgaben</h1>
-            <p class="mb-1" style="font-size: 28px;">2500,- €</p>
-          </div>
+<a class="text-decoration-none" [routerLink]="['/expenses']">
+  <div class="card mb-3 bg bg-success">
+    <div class="card-body text-center">
+      <h1 class="mb-4" style="font-size: 38px;">Ausgaben</h1>
+      <p class="mb-1" style="font-size: 28px;">2500,- €</p>
+    </div>
+  </div>
+</a>
+      </div>
+    </div>
+<a class="text-decoration-none" [routerLink]="['/financial']">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card mb-3 bg-light">
+        <div class="card-body text-center">
+          <h1 class="mb-2">Umsätze</h1>
+          <p>vom 01.01.2023 bis  01.01.2023</p>
+          <img src="../../../assets/images/canvas.png" alt="chart"
+           style="height: 212px;">
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card mb-3 bg-light">
-          <div class="card-body text-center">
-            <h1 class="mb-2">Umsätze</h1>
-            <p>vom 01.01.2023 bis  01.01.2023</p>
-            <img src="../../../assets/images/canvas.png" alt="chart"
-             style="height: 212px;">
-          </div>
-        </div>
-      </div>
-    </div>
+  </div>
+</a>
   </div>
 </div>
 </ng-container>
