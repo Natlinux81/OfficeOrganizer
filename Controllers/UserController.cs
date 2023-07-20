@@ -23,17 +23,17 @@ namespace OfficeOrganizer.Controllers
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly AuthenticationDbContext _authenticationDbContext;
+        private readonly ApplicationDbContext _applicationDbContext;
 
-        public UserController(AuthenticationDbContext authenticationDbContext)
+        public UserController(ApplicationDbContext applicationDbContext)
         {
-            _authenticationDbContext = authenticationDbContext;
+            _applicationDbContext = applicationDbContext;
         }  
 
         [Authorize] 
         [HttpGet]
         public async Task<ActionResult<User>> GetAllUsers(){
-            return Ok(await _authenticationDbContext.Users.ToListAsync());
+            return Ok(await _applicationDbContext.Users.ToListAsync());
         }
 
         [HttpPost("authenticate")]
@@ -42,7 +42,7 @@ namespace OfficeOrganizer.Controllers
             if (userRequest == null)
                 return BadRequest();  
                          
-            var user = await _authenticationDbContext.Users
+            var user = await _applicationDbContext.Users
             .FirstOrDefaultAsync(x => x.Username == userRequest.Username);            
 
             if (user == null)
@@ -59,7 +59,7 @@ namespace OfficeOrganizer.Controllers
             var newRefreshToken = CreateRefreshToken();
             user.RefreshToken = newRefreshToken;
             user.RefreshTokenExpiryTime = DateTime.Now.AddDays(5);
-            await _authenticationDbContext.SaveChangesAsync();
+            await _applicationDbContext.SaveChangesAsync();
 
             return Ok(new TokenApiDto
             {
@@ -90,17 +90,17 @@ namespace OfficeOrganizer.Controllers
             userRequest.Password = PasswordHasher.HashPassword(userRequest.Password);
             userRequest.Role = "User";
             userRequest.Token = "";                
-            await _authenticationDbContext.Users.AddAsync(userRequest);
-            await _authenticationDbContext.SaveChangesAsync();
+            await _applicationDbContext.Users.AddAsync(userRequest);
+            await _applicationDbContext.SaveChangesAsync();
 
             return Ok( new {Message = "User Registered!"});
         }        
 
         private Task<bool> CheckUserNameExistAsync(string username)
-        => _authenticationDbContext.Users.AnyAsync(x => x.Username == username);
+        => _applicationDbContext.Users.AnyAsync(x => x.Username == username);
 
         private Task<bool> CheckEmailExistAsync(string email)
-        => _authenticationDbContext.Users.AnyAsync(x => x.Email == email);
+        => _applicationDbContext.Users.AnyAsync(x => x.Email == email);
 
         private static string CheckPasswordStrength(string password)
         {
@@ -141,7 +141,7 @@ namespace OfficeOrganizer.Controllers
             var tokenBytes = RandomNumberGenerator.GetBytes(64);
             var refreshToken = Convert.ToBase64String(tokenBytes);
 
-            var tokenInUser = _authenticationDbContext.Users
+            var tokenInUser = _applicationDbContext.Users
                 .Any(a => a.RefreshToken == refreshToken);
             if (tokenInUser)
             {
@@ -180,13 +180,13 @@ namespace OfficeOrganizer.Controllers
             string refreshToken = tokenApiDto.RefreshToken;
             var principal = GetPrincipleFromExpiredToken(accessToken);
             var username = principal.Identity.Name;
-            var user = await _authenticationDbContext.Users.FirstOrDefaultAsync(u => u.Username == username);
+            var user = await _applicationDbContext.Users.FirstOrDefaultAsync(u => u.Username == username);
             if (user is null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.Now)
                 return BadRequest("Invalid Request");
             var newAccessToken = CreateJwt(user);
             var newRefreshToken = CreateRefreshToken();
             user.RefreshToken = newRefreshToken;
-            await _authenticationDbContext.SaveChangesAsync();
+            await _applicationDbContext.SaveChangesAsync();
             return Ok(new TokenApiDto()
             {
                 AccessToken = newAccessToken,

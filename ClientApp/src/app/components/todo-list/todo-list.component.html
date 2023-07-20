@@ -1,12 +1,12 @@
 <div class="container" style="max-width: 500px;">
-  <form #FormAdd="ngForm" (submit)="add()">
+  <form #FormAdd="ngForm" *ngIf="!isEditMode" (submit)="add()">
     <div class="input-group mb-3">
       <input required [(ngModel)]="newTask.title" class="form-control" name="taskTitle" type="text" placeholder="Todo">
       <button [disabled]="FormAdd.invalid" type="submit" class="btn add-button">Add</button>
     </div>
   </form>
   <!-- edit -->
-  <form #FormEdit="ngForm" (ngSubmit)="update()">
+  <form #FormEdit="ngForm" *ngIf="isEditMode" (ngSubmit)="update()">
     <div class="input-group mb-3">
       <input [(ngModel)]="selectedTask.title" class="form-control" name="taskTitle" type="text"
         placeholder="Todo">
@@ -21,9 +21,9 @@
           type="checkbox" value="" id="firstCheckbox">
         <label class="form-check-label" [class.is-done]="taskItem.isDone">{{taskItem.title}}</label>
       </div>
-      <a [routerLink]="['/todo', 'edit', taskItem.id]" class="btn btn-sm"><mat-icon
+      <a [routerLink]="['/todo', 'edit', taskItem.id]" class="btn btn-sm" (click)="isEditMode = true" *ngIf="!taskItem.isDone"><mat-icon
           class="edit-button">create</mat-icon></a>
-      <span (click)="delete(taskItem.id)" class="btn btn-sm"><mat-icon
+      <span (click)="delete(taskItem.id)" class="btn btn-sm" *ngIf="!taskItem.isDone"><mat-icon
           class="remove-button">delete_forever</mat-icon></span>
     </li>
   </ul>

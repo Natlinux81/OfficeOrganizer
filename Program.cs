@@ -18,9 +18,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>{
     options.UseSqlServer(connectionString);
 });
 
-builder.Services.AddDbContext<AuthenticationDbContext>(options =>{
-    options.UseSqlServer(connectionString);
-});
+// builder.Services.AddDbContext<AuthenticationDbContext>(options =>{
+//     options.UseSqlServer(connectionString);
+// });
 
 builder.Services.AddAuthentication(x =>
 {

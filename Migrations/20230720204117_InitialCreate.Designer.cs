@@ -9,11 +9,11 @@ using OfficeOrganizer.Data;
 
 #nullable disable
 
-namespace OfficeOrganizer.Migrations.AuthenticationDb
+namespace OfficeOrganizer.Migrations
 {
-    [DbContext(typeof(AuthenticationDbContext))]
-    [Migration("20230611160715_InitialUser")]
-    partial class InitialUser
+    [DbContext(typeof(ApplicationDbContext))]
+    [Migration("20230720204117_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,26 @@ namespace OfficeOrganizer.Migrations.AuthenticationDb
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("OfficeOrganizer.Models.TaskItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDone")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Owner")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TaskItems");
+                });
 
             modelBuilder.Entity("OfficeOrganizer.Models.User", b =>
                 {
@@ -35,6 +55,12 @@ namespace OfficeOrganizer.Migrations.AuthenticationDb
 
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RefreshTokenExpiryTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Role")
                         .HasColumnType("nvarchar(max)");

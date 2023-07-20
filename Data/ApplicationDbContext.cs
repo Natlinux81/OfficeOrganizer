@@ -14,6 +14,12 @@ namespace OfficeOrganizer.Data
         {
             
         }
+        public DbSet<User> Users {get; set;}
         public DbSet<TaskItem> TaskItems { get; set; }
+
+         protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().ToTable("users");
+        }
     }
 }

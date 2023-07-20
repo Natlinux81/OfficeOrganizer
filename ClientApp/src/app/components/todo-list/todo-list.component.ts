@@ -1,4 +1,4 @@
-import { Component, ViewChild} from '@angular/core';
+import { Component,OnInit, ViewChild} from '@angular/core';
 import { TaskItem } from 'src/app/shared/task-item';
 import { TaskService } from 'src/app/services/task.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,10 +11,11 @@ import { NgForm } from '@angular/forms';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss']
 })
-export class TodoListComponent {
+export class TodoListComponent implements OnInit {
 
   taskItems : TaskItem[] = []; // Array to store tasks
   taskOwner: string = ""
+  isEditMode!: boolean
 
   newTask : TaskItem = { // A new task object that can be added
     id: '',
@@ -84,6 +85,7 @@ export class TodoListComponent {
         this.getAllTasks(); // Reload the tasks after the update
       this.router.navigate(['todo']); // Navigate to the 'todo' route
       console.log(this.selectedTask)
+      this.isEditMode = false;
       });
     }
 
