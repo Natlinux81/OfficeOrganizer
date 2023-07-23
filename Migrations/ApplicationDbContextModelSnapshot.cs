@@ -74,7 +74,29 @@ namespace OfficeOrganizer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("users", (string)null);
+                    b.ToTable("Users", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("cbb59348-44bc-472a-ad6c-9cad29a558b5"),
+                            Email = "user@admin.de",
+                            Password = "+m2X1ps7zyynZi6qQuYRZrKQ7wX0QQ1+M5H9OnWtxOjid8sR",
+                            RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Role = "User",
+                            Terms = false,
+                            Username = "NatlinuxUser"
+                        },
+                        new
+                        {
+                            Id = new Guid("56040f61-f7ed-48b7-a548-2b817f7ba6df"),
+                            Email = "admin@admin.de",
+                            Password = "YL8AcDX5Xo+NjpMins0pYWS8m2aTZDSP00YPgTENI1oPOlMk",
+                            RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Role = "Admin",
+                            Terms = false,
+                            Username = "NatlinuxAdmin"
+                        });
                 });
 #pragma warning restore 612, 618
         }

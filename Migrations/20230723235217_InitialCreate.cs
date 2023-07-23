@@ -24,7 +24,7 @@ namespace OfficeOrganizer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "users",
+                name: "Users",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -39,8 +39,18 @@ namespace OfficeOrganizer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_users", x => x.Id);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Email", "Password", "RefreshToken", "RefreshTokenExpiryTime", "Role", "Terms", "Token", "Username" },
+                values: new object[] { new Guid("56040f61-f7ed-48b7-a548-2b817f7ba6df"), "admin@admin.de", "YL8AcDX5Xo+NjpMins0pYWS8m2aTZDSP00YPgTENI1oPOlMk", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", false, null, "NatlinuxAdmin" });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Email", "Password", "RefreshToken", "RefreshTokenExpiryTime", "Role", "Terms", "Token", "Username" },
+                values: new object[] { new Guid("cbb59348-44bc-472a-ad6c-9cad29a558b5"), "user@admin.de", "+m2X1ps7zyynZi6qQuYRZrKQ7wX0QQ1+M5H9OnWtxOjid8sR", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "User", false, null, "NatlinuxUser" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -49,7 +59,7 @@ namespace OfficeOrganizer.Migrations
                 name: "TaskItems");
 
             migrationBuilder.DropTable(
-                name: "users");
+                name: "Users");
         }
     }
 }
