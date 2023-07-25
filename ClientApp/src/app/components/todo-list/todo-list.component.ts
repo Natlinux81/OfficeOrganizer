@@ -1,5 +1,5 @@
 import { Component,OnInit, ViewChild} from '@angular/core';
-import { TaskItem } from 'src/app/shared/task-item';
+import { TaskItem } from 'src/app/models/task-item';
 import { TaskService } from 'src/app/services/task.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserStoreService } from 'src/app/services/user-store.service';

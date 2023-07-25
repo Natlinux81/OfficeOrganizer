@@ -85,7 +85,7 @@
     </mat-card-header>
     <mat-card-content>
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="users" matSort>
+  <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z10">
 
     <!-- # Column -->
     <ng-container matColumnDef="No.">
@@ -119,6 +119,17 @@
       <td mat-cell *matCellDef="let element"> {{element.role}} </td>
     </ng-container>
 
+        <!-- Role Actions -->
+        <ng-container matColumnDef="Actions">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Actions
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-raised-button color="primary">Edit</button>
+            <button mat-raised-button color="warn">Delete</button>
+          </td>
+        </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
 
@@ -131,7 +142,8 @@
 
 </mat-card-content>
 <mat-card-footer>
-<mat-paginator #paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Selected pages of users"></mat-paginator>
+  <br>
+<mat-paginator #paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons aria-label="Selected pages of users"></mat-paginator>
 
 </mat-card-footer>
 </mat-card>

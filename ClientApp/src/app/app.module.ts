@@ -13,6 +13,7 @@ import { MatCardModule} from '@angular/material/card';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule} from '@angular/material/input'
 import { MatIconModule} from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule} from '@angular/material/datepicker';
@@ -58,6 +59,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
+    MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
