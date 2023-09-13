@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OfficeOrganizer.Data;
@@ -12,7 +11,7 @@ using OfficeOrganizer.Data;
 namespace OfficeOrganizer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230723235217_InitialCreate")]
+    [Migration("20230913150601_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,24 +19,22 @@ namespace OfficeOrganizer.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.16")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("OfficeOrganizer.Models.TaskItem", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<bool>("IsDone")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Owner")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
@@ -48,31 +45,31 @@ namespace OfficeOrganizer.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("RefreshToken")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("RefreshTokenExpiryTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Role")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("Terms")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Token")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Username")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
@@ -81,9 +78,9 @@ namespace OfficeOrganizer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("cbb59348-44bc-472a-ad6c-9cad29a558b5"),
-                            Email = "user@admin.de",
-                            Password = "+m2X1ps7zyynZi6qQuYRZrKQ7wX0QQ1+M5H9OnWtxOjid8sR",
+                            Id = new Guid("d9065107-ae26-4ca9-8e52-e3d5a255d200"),
+                            Email = "nathaliewenske790@hotmail.com",
+                            Password = "k1LZUZLr7MP+mz2KQfnQY7Uk9HrALUsrOX79sEBYVNnMNVAs",
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Role = "User",
                             Terms = false,
@@ -91,9 +88,9 @@ namespace OfficeOrganizer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("56040f61-f7ed-48b7-a548-2b817f7ba6df"),
+                            Id = new Guid("d78c5c0f-c651-4d64-ba7e-8a74ea7b8863"),
                             Email = "admin@admin.de",
-                            Password = "YL8AcDX5Xo+NjpMins0pYWS8m2aTZDSP00YPgTENI1oPOlMk",
+                            Password = "aajwHQA2vitmKGTADkCJsDMt6X9jkJgXxQiIDUc/6jYArGEf",
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Role = "Admin",
                             Terms = false,

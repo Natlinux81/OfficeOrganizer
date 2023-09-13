@@ -41,4 +41,4 @@ Thumbs.db
 
 .angular
 
-../appsettings.json
+# ../appsettings.json
