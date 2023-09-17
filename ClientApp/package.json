@@ -30,7 +30,7 @@
     "@fullcalendar/core": "^6.1.8",
     "@fullcalendar/daygrid": "^6.1.8",
     "@fullcalendar/interaction": "^6.1.8",
-    "@nguniversal/express-engine": "^16.1.1",
+    "@nguniversal/express-engine": "^16.2.0",
     "@popperjs/core": "^2.11.8",
     "angular-in-memory-web-api": "^0.16.0",
     "bootstrap": "^5.3.0",
