@@ -4,6 +4,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import ValidateForm from 'src/app/shared/validateForm';
 import { AuthenticateService } from 'src/app/services/authenticate.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ForgotPasswordPopupComponent } from '../forgot-password-popup/forgot-password-popup.component';
 
 @Component({
   selector: 'app-login',
@@ -14,13 +16,14 @@ export class LoginComponent {
 
   type: string = "password";
   isText: boolean = true;
-  eyeIcon: string = "bi-eye-slash"
+  eyeIcon: string = "bi-eye-slash"  
 
   constructor(
     private router : Router,
     private formBuilder : FormBuilder,
     private authenticateService : AuthenticateService,
-    private userStore : UserStoreService) {}
+    private userStore : UserStoreService,
+    private dialog : MatDialog) {}
 
 
     loginForm = this.formBuilder.group({
@@ -59,4 +62,10 @@ export class LoginComponent {
       }
     }
 
+    openPopup(){
+     this.dialog.open(ForgotPasswordPopupComponent, {
+        width: '30%',
+      });
+    
+    } 
 }

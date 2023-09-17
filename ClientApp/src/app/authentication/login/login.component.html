@@ -24,7 +24,7 @@
               <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required' , 'password')"
                 class="text-danger">*Password is required</small>
                  <!-- Redirect links -->
-              <p class="m-1"><a href="#!" class="fw-bold text-body"><u>Forgot Password?</u></a></p>
+              <p class="m-1"><a (click)="openPopup()" class="fw-bold text-body"><u>Forgot Password?</u></a></p>
               <div class="d-flex justify-content-center">
                 <button [disabled]="loginForm.invalid" (click)="onSignIn()" type="submit" class="btn btn-lg btn-light">Sign in</button>
               </div>

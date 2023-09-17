@@ -14,6 +14,7 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule} from '@angular/material/input'
 import { MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule} from '@angular/material/datepicker';
@@ -30,6 +31,8 @@ import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { ForgotPasswordPopupComponent } from './authentication/forgot-password-popup/forgot-password-popup.component';
+import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
 
 // FullCalendarModule.registerPlugins([
 //   dayGridPlugin,
@@ -45,7 +48,9 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     HomeComponent,
     DashboardComponent,
     TodoListComponent,
-    CalendarComponent
+    CalendarComponent,
+    ForgotPasswordPopupComponent,
+    ResetPasswordComponent
 
   ],
   imports: [
@@ -60,6 +65,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
+    MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,

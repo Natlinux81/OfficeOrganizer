@@ -10,6 +10,7 @@ import { LoginComponent } from './authentication/login/login.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { EarningsComponent } from './components/earnings/earnings.component';
 import { ExpensesComponent } from './components/expenses/expenses.component';
+import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   {component: TodoListComponent, path: 'todo/edit/:id'},
   {component: RegisterComponent, path: 'register'},
   {component: LoginComponent, path: 'login'},
+  {component: ResetPasswordComponent, path: 'reset'}
 ]
 
 @NgModule({

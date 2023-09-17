@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using OfficeOrganizer.UtilityServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,8 @@ var connectionString = builder.Configuration.GetConnectionString("MyConnection")
 builder.Services.AddDbContext<ApplicationDbContext>(options =>{
     options.UseMySql(connectionString, ServerVersion.AutoDetect (connectionString));
 });
+
+builder.Services.AddScoped<IEMailService, EmailService>();
 
 // builder.Services.AddDbContext<AuthenticationDbContext>(options =>{
 //     options.UseSqlServer(connectionString);

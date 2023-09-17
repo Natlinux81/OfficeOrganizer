@@ -16,6 +16,8 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using OfficeOrganizer.Models.Dto;
 using Microsoft.AspNetCore.Authorization;
+using NETCore.MailKit.Core;
+using OfficeOrganizer.UtilityServices;
 
 namespace OfficeOrganizer.Controllers
 {
@@ -24,10 +26,14 @@ namespace OfficeOrganizer.Controllers
     public class UserController : ControllerBase
     {
         private readonly ApplicationDbContext _applicationDbContext;
+        private readonly IConfiguration _configuration;
+        private readonly IEMailService _emailService;
 
-        public UserController(ApplicationDbContext applicationDbContext)
+        public UserController(ApplicationDbContext applicationDbContext, IConfiguration configuration, IEMailService eMailService)
         {
             _applicationDbContext = applicationDbContext;
+            _configuration = configuration;
+            _emailService = eMailService;
         }  
 
         [Authorize] 
@@ -193,6 +199,65 @@ namespace OfficeOrganizer.Controllers
                 RefreshToken = newRefreshToken,
             });
         }
-        
+
+        [HttpPost("send-reset-email/{email}")]
+        public async Task<IActionResult> SendEmail(string email)
+        {
+            var user = await _applicationDbContext.Users.FirstOrDefaultAsync(a => a.Email == email);
+            if (user is null)
+            {
+                return NotFound(new
+                {
+                    StatusCode = 404,
+                    Message = "email Doesn´t Exist"
+                });                
+            }
+            var tokenBytes = RandomNumberGenerator.GetBytes(64);
+            var emailToken = Convert.ToBase64String(tokenBytes);
+            user.ResetPasswordToken = emailToken;
+            user.ResetPasswordExpiry = DateTime.Now.AddMinutes(15);
+            string from = _configuration ["EmailSettings:From"];
+            var emailModel = new EmailModel(email, "Reset Password!!", EmailBody.EmailStringBody(email,emailToken));
+            _emailService.SendEmail(emailModel);
+            _applicationDbContext.Entry(user).State = EntityState.Modified;
+            await _applicationDbContext.SaveChangesAsync();
+            return Ok(new
+            {
+                StatusCode = 200,
+                Message = "Email Sent!"
+            });
+        }  
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword(ResetPasswordDto resetPasswordDto)
+        {
+            var newToken = resetPasswordDto.EmailToken.Replace(" ", "+");
+            var user = await _applicationDbContext.Users.AsNoTracking().FirstOrDefaultAsync(a => a.Email == resetPasswordDto.Email);
+            if (user is null)
+            {
+                return NotFound(new
+                {
+                    StatusCode = 404,
+                    Message = "User Doesn´t Exist"
+                });
+            }
+             var tokenCode = user.ResetPasswordToken;
+             DateTime emailTokenExpiry = user.ResetPasswordExpiry;
+             if (tokenCode != resetPasswordDto.EmailToken || emailTokenExpiry < DateTime.Now)
+             {
+                return BadRequest(new
+                {
+                    StatusCode = 400,
+                    Message = "Invalid Reset link"
+                });
+             }
+             user.Password = PasswordHasher.HashPassword(resetPasswordDto.NewPassword);
+             _applicationDbContext.Entry(user).State = EntityState.Modified;
+             await _applicationDbContext.SaveChangesAsync();
+             return Ok(new
+             {
+                StatusCode = 200,
+                Message = "Password Reset Successfully"
+             });
+        }     
     }
 }
