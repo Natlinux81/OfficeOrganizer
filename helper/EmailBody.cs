@@ -18,7 +18,7 @@ namespace OfficeOrganizer.helper
                     <hr>
                     <p style=""text-align: center;"">You`re receiving this e-mail because your requested a password reset for your OfficeOrganizer account</p>
                     <p>Please tap the button below to choose an new password</p>
-                    <a href=""http://localhost:44491/reset?email={email}&code={emailToken}"" target=""_blank"" style=""background:#c7c7c7; padding: 10px; border: none;
+                    <a href=""https://localhost:44491/reset?email={email}&code={emailToken}"" target=""_blank"" style=""background:#c7c7c7; padding: 10px; border: none;
                     color:black; border-radius: 10px; display:block; margin:0 auto; width:25%; text-align:center;text-decoration:none"">Reset Password</a>
 
                     <p>Kind Regards, <br><br></p>

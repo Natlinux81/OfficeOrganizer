@@ -36,7 +36,7 @@ onSignUp(){
         this.router.navigate(['/login'])
       },
       error:(err) =>{
-        alert(err?.error.message)
+        alert(err.message)
       }
     })
   } else{

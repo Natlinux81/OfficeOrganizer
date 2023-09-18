@@ -209,7 +209,7 @@ namespace OfficeOrganizer.Controllers
                 return NotFound(new
                 {
                     StatusCode = 404,
-                    Message = "email Doesn´t Exist"
+                    Message = "email Doesn't Exist"
                 });                
             }
             var tokenBytes = RandomNumberGenerator.GetBytes(64);
@@ -237,7 +237,7 @@ namespace OfficeOrganizer.Controllers
                 return NotFound(new
                 {
                     StatusCode = 404,
-                    Message = "User Doesn´t Exist"
+                    Message = "User Doesn't Exist"
                 });
             }
              var tokenCode = user.ResetPasswordToken;
@@ -250,6 +250,12 @@ namespace OfficeOrganizer.Controllers
                     Message = "Invalid Reset link"
                 });
              }
+
+                         // Check password Strength
+            var newPassword = CheckPasswordStrength(resetPasswordDto.NewPassword);
+            if(!string.IsNullOrEmpty(newPassword))
+                return BadRequest(new {Message = newPassword.ToString()});
+
              user.Password = PasswordHasher.HashPassword(resetPasswordDto.NewPassword);
              _applicationDbContext.Entry(user).State = EntityState.Modified;
              await _applicationDbContext.SaveChangesAsync();
