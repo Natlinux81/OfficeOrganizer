@@ -78,20 +78,20 @@
 				"serve": {
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
-						"production": {
-							"browserTarget": "OfficeOrganizer:build:production"
+            "production": {
+              "buildTarget": "OfficeOrganizer:build:production"
 						},
-						"development": {
-							"browserTarget": "OfficeOrganizer:build:development",
-							"proxyConfig": "proxy.conf.js"
+            "development": {
+              "proxyConfig": "proxy.conf.js",
+              "buildTarget": "OfficeOrganizer:build:development"
 						}
 					},
 					"defaultConfiguration": "development"
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
-					"options": {
-						"browserTarget": "OfficeOrganizer:build"
+          "options": {
+            "buildTarget": "OfficeOrganizer:build"
 					}
 				},
 				"test": {
