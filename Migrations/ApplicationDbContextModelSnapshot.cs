@@ -82,9 +82,9 @@ namespace OfficeOrganizer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("405b39da-c3c0-44e6-8ad8-a333492ced03"),
+                            Id = new Guid("a21e1a40-5673-4004-8a8b-346e1fcb84b4"),
                             Email = "nathaliewenske790@hotmail.com",
-                            Password = "RcBf3OplqtTkzjQbafwTts9RdYC0NhDRXUPVa1FiAovVJpNQ",
+                            Password = "kAPOE18+v7HaPNH4HqygmsRmmN2mFg1GkSnDCtU0Ewc5ntPn",
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ResetPasswordExpiry = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Role = "User",
@@ -93,9 +93,9 @@ namespace OfficeOrganizer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4daa3ae6-a283-436b-86a6-79d5d177d249"),
+                            Id = new Guid("4dd2c249-f337-4394-9609-2733f9ef3bef"),
                             Email = "admin@admin.de",
-                            Password = "VqJ/tDt3tNJDOskaGlBUbKFYUNlyC6QVanjA9d8IBm/dKevF",
+                            Password = "/GSEwDO4EmS/WApHptm5CKgurmheXDY/eViZeOd4wna13HBc",
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ResetPasswordExpiry = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Role = "Admin",

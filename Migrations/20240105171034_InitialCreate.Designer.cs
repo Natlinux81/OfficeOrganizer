@@ -11,7 +11,7 @@ using OfficeOrganizer.Data;
 namespace OfficeOrganizer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230913150601_InitialCreate")]
+    [Migration("20240105171034_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,6 +59,12 @@ namespace OfficeOrganizer.Migrations
                     b.Property<DateTime>("RefreshTokenExpiryTime")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<DateTime>("ResetPasswordExpiry")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("ResetPasswordToken")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Role")
                         .HasColumnType("longtext");
 
@@ -78,20 +84,22 @@ namespace OfficeOrganizer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d9065107-ae26-4ca9-8e52-e3d5a255d200"),
+                            Id = new Guid("a21e1a40-5673-4004-8a8b-346e1fcb84b4"),
                             Email = "nathaliewenske790@hotmail.com",
-                            Password = "k1LZUZLr7MP+mz2KQfnQY7Uk9HrALUsrOX79sEBYVNnMNVAs",
+                            Password = "kAPOE18+v7HaPNH4HqygmsRmmN2mFg1GkSnDCtU0Ewc5ntPn",
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ResetPasswordExpiry = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Role = "User",
                             Terms = false,
                             Username = "NatlinuxUser"
                         },
                         new
                         {
-                            Id = new Guid("d78c5c0f-c651-4d64-ba7e-8a74ea7b8863"),
+                            Id = new Guid("4dd2c249-f337-4394-9609-2733f9ef3bef"),
                             Email = "admin@admin.de",
-                            Password = "aajwHQA2vitmKGTADkCJsDMt6X9jkJgXxQiIDUc/6jYArGEf",
+                            Password = "/GSEwDO4EmS/WApHptm5CKgurmheXDY/eViZeOd4wna13HBc",
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ResetPasswordExpiry = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Role = "Admin",
                             Terms = false,
                             Username = "NatlinuxAdmin"

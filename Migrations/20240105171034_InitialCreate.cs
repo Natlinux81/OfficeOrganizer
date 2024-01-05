@@ -47,7 +47,10 @@ namespace OfficeOrganizer.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     RefreshToken = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    RefreshTokenExpiryTime = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    RefreshTokenExpiryTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    ResetPasswordToken = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ResetPasswordExpiry = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -57,13 +60,13 @@ namespace OfficeOrganizer.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Email", "Password", "RefreshToken", "RefreshTokenExpiryTime", "Role", "Terms", "Token", "Username" },
-                values: new object[] { new Guid("d78c5c0f-c651-4d64-ba7e-8a74ea7b8863"), "admin@admin.de", "aajwHQA2vitmKGTADkCJsDMt6X9jkJgXxQiIDUc/6jYArGEf", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", false, null, "NatlinuxAdmin" });
+                columns: new[] { "Id", "Email", "Password", "RefreshToken", "RefreshTokenExpiryTime", "ResetPasswordExpiry", "ResetPasswordToken", "Role", "Terms", "Token", "Username" },
+                values: new object[] { new Guid("4dd2c249-f337-4394-9609-2733f9ef3bef"), "admin@admin.de", "/GSEwDO4EmS/WApHptm5CKgurmheXDY/eViZeOd4wna13HBc", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Admin", false, null, "NatlinuxAdmin" });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Email", "Password", "RefreshToken", "RefreshTokenExpiryTime", "Role", "Terms", "Token", "Username" },
-                values: new object[] { new Guid("d9065107-ae26-4ca9-8e52-e3d5a255d200"), "nathaliewenske790@hotmail.com", "k1LZUZLr7MP+mz2KQfnQY7Uk9HrALUsrOX79sEBYVNnMNVAs", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "User", false, null, "NatlinuxUser" });
+                columns: new[] { "Id", "Email", "Password", "RefreshToken", "RefreshTokenExpiryTime", "ResetPasswordExpiry", "ResetPasswordToken", "Role", "Terms", "Token", "Username" },
+                values: new object[] { new Guid("a21e1a40-5673-4004-8a8b-346e1fcb84b4"), "nathaliewenske790@hotmail.com", "kAPOE18+v7HaPNH4HqygmsRmmN2mFg1GkSnDCtU0Ewc5ntPn", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "User", false, null, "NatlinuxUser" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
