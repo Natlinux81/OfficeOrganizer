@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
-import ValidateForm from 'src/app/shared/validateForm';
+import ValidateForm from 'src/app/helper/validateForm';
 import { AuthenticateService } from 'src/app/services/authenticate.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ForgotPasswordPopupComponent } from '../forgot-password-popup/forgot-password-popup.component';
+import { DialogService } from 'src/app/services/dialog.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,8 @@ export class LoginComponent {
     private formBuilder : FormBuilder,
     private authenticateService : AuthenticateService,
     private userStore : UserStoreService,
-    private dialog : MatDialog) {}
+    private dialog : MatDialog,
+    private infoService : DialogService) {}
 
 
     loginForm = this.formBuilder.group({
@@ -48,11 +50,12 @@ export class LoginComponent {
             this.authenticateService.storeRefreshToken(result.refreshToken)
             const tokenPayload = this.authenticateService.decodedToken();
             this.userStore.setUsernameForStore(tokenPayload.name);
-            this.userStore.setRoleForStore(tokenPayload.role);
+            this.userStore.setRoleForStore(tokenPayload.role);                
             this.router.navigate(['dashboard'])
+            
           },
           error:(err) =>{
-            alert(err?.error.message)
+            this.infoService.error()
           }
         })
 

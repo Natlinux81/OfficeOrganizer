@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
-import ValidateForm from 'src/app/shared/validateForm';
+import ValidateForm from 'src/app/helper/validateForm';
 import { AuthenticateService } from 'src/app/services/authenticate.service';
 
 @Component({
@@ -11,6 +11,9 @@ import { AuthenticateService } from 'src/app/services/authenticate.service';
 })
 export class RegisterComponent {
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
+  type: string = "password";
+  isText: boolean = true;
+  eyeIcon: string = "bi-eye-slash" 
 
   constructor(
     private router : Router,
@@ -25,7 +28,13 @@ registerForm = this.formBuilder.group({
   terms: ['', Validators.required]
 });
 
-onSignUp(){
+hideShowPassword(){
+  this.isText = !this.isText;
+  this.isText ? this.eyeIcon = "bi-eye" : this.eyeIcon = "bi-eye-slash";
+  this.isText ? this.type = "text" : this.type = "password";
+}
+
+onSignUp(): void{
   if (this.registerForm.valid) {
     console.log(this.registerForm.value)
     // Send the obj to database

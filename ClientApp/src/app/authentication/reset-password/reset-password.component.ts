@@ -4,8 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { er } from '@fullcalendar/core/internal-common';
 import { ResetPasswordModel } from 'src/app/models/reset-password-model';
 import { ResetPasswordService } from 'src/app/services/reset-password.service';
-import { ConfirmPasswordValidator } from 'src/app/shared/reset-password-validator';
-import ValidateForm from 'src/app/shared/validateForm';
+import { ConfirmPasswordValidator } from 'src/app/helper/reset-password-validator';
+import ValidateForm from 'src/app/helper/validateForm';
 
 @Component({
   selector: 'app-reset-password',
@@ -13,6 +13,10 @@ import ValidateForm from 'src/app/shared/validateForm';
   styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent implements OnInit {
+
+  type: string = "password";
+  isText: boolean = true;
+  eyeIcon: string = "bi-eye-slash" 
 
   resetForm!: FormGroup; 
   emailToReset!: string;
@@ -40,6 +44,12 @@ export class ResetPasswordComponent implements OnInit {
       console.log(this.emailToken)
       console.log(this.emailToReset)
     })
+  }
+
+  hideShowPassword(){
+    this.isText = !this.isText;
+    this.isText ? this.eyeIcon = "bi-eye" : this.eyeIcon = "bi-eye-slash";
+    this.isText ? this.type = "text" : this.type = "password";
   }
 
   reset() {

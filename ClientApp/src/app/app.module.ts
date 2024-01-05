@@ -33,6 +33,7 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ForgotPasswordPopupComponent } from './authentication/forgot-password-popup/forgot-password-popup.component';
 import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
+import { InfoDialogComponent } from './shared/info-dialog/info-dialog.component';
 
 // FullCalendarModule.registerPlugins([
 //   dayGridPlugin,
@@ -50,7 +51,8 @@ import { ResetPasswordComponent } from './authentication/reset-password/reset-pa
     TodoListComponent,
     CalendarComponent,
     ForgotPasswordPopupComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    InfoDialogComponent
 
   ],
   imports: [

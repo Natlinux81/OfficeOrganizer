@@ -52,14 +52,14 @@ namespace OfficeOrganizer.Controllers
             .FirstOrDefaultAsync(x => x.Username == userRequest.Username);            
 
             if (user == null)
-                return NotFound(new {Message = "User Not Found!"});
-                
+                return NotFound(new {Message = "User Not Found!"});            
+               
 
             if(!PasswordHasher.VerifyPassword(userRequest.Password, user.Password))
             {
                 return BadRequest(new {Message = "Wrong Password"});
-            }
-
+            }  
+          
             user.Token = CreateJwt(user);
             var newAccessToken = user.Token;
             var newRefreshToken = CreateRefreshToken();
@@ -70,8 +70,10 @@ namespace OfficeOrganizer.Controllers
             return Ok(new TokenApiDto
             {
                 AccessToken = newAccessToken,
-                RefreshToken = newRefreshToken
+                RefreshToken = newRefreshToken,
+            
             });    
+           
         } 
 
         [HttpPost("register")]    
