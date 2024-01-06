@@ -13,12 +13,13 @@ namespace OfficeOrganizer.helper
         private static readonly int SaltSize = 16;
         private static readonly int HashSize = 20;
         private static readonly int Iterations = 1000;
+        private static readonly HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA256;
 
         public static string HashPassword(string password)
         {
             byte[] salt;
             rng.GetBytes(salt = new byte[SaltSize]);
-            var key = new Rfc2898DeriveBytes(password, salt, Iterations);
+            var key = new Rfc2898DeriveBytes(password, salt, Iterations,hashAlgorithm);
             var hash = key.GetBytes(HashSize);
 
             var hashBytes = new byte[SaltSize + HashSize];
@@ -37,7 +38,7 @@ namespace OfficeOrganizer.helper
             var salt = new byte[SaltSize];
             Array.Copy(hashBytes, 0, salt, 0, SaltSize);
 
-            var key = new Rfc2898DeriveBytes(password, salt, Iterations);
+            var key = new Rfc2898DeriveBytes(password, salt, Iterations,hashAlgorithm);
             byte[] hash = key.GetBytes(HashSize);
 
             for (var i = 0; i < HashSize; i++)

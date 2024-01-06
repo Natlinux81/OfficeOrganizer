@@ -61,12 +61,12 @@ namespace OfficeOrganizer.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Email", "Password", "RefreshToken", "RefreshTokenExpiryTime", "ResetPasswordExpiry", "ResetPasswordToken", "Role", "Terms", "Token", "Username" },
-                values: new object[] { new Guid("4dd2c249-f337-4394-9609-2733f9ef3bef"), "admin@admin.de", "/GSEwDO4EmS/WApHptm5CKgurmheXDY/eViZeOd4wna13HBc", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Admin", false, null, "NatlinuxAdmin" });
+                values: new object[] { new Guid("77928cc6-d7cb-40a8-a69d-ab56be841663"), "admin@admin.de", "yLowCWdqLtRvqbP5p+q5fZzsRDH2czDz1DXLvbfYNXKxSrbC", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Admin", false, null, "NatlinuxAdmin" });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Email", "Password", "RefreshToken", "RefreshTokenExpiryTime", "ResetPasswordExpiry", "ResetPasswordToken", "Role", "Terms", "Token", "Username" },
-                values: new object[] { new Guid("a21e1a40-5673-4004-8a8b-346e1fcb84b4"), "nathaliewenske790@hotmail.com", "kAPOE18+v7HaPNH4HqygmsRmmN2mFg1GkSnDCtU0Ewc5ntPn", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "User", false, null, "NatlinuxUser" });
+                values: new object[] { new Guid("8ba01d10-752a-4ca6-b752-3a10a4366335"), "nathaliewenske790@hotmail.com", "ohr6NmC7lTCRyHe3h5d9mnh1KsQwpx8uECL5ouYczHif5bM3", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "User", false, null, "NatlinuxUser" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

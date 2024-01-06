@@ -125,7 +125,7 @@ namespace OfficeOrganizer.Controllers
 
         private string CreateJwt(User user){
             var jwtTokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("veryverysceret.....");
+            var key = Encoding.ASCII.GetBytes("this is my custom Secret key for authentication");
             var identity = new ClaimsIdentity(new Claim[]
             {
                 new Claim(ClaimTypes.Role, user.Role),
@@ -160,7 +160,7 @@ namespace OfficeOrganizer.Controllers
 
         private ClaimsPrincipal GetPrincipleFromExpiredToken(string token)
         {
-            var key = Encoding.ASCII.GetBytes("veryverysceret.....");
+            var key = Encoding.ASCII.GetBytes("this is my custom Secret key for authentication");
             var tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateAudience = false,
