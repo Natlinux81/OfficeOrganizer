@@ -16,7 +16,7 @@ namespace OfficeOrganizer.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.16")
+                .HasAnnotation("ProductVersion", "8.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("OfficeOrganizer.Models.TaskItem", b =>
@@ -82,9 +82,9 @@ namespace OfficeOrganizer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8ba01d10-752a-4ca6-b752-3a10a4366335"),
+                            Id = new Guid("ae644cfd-8534-4fec-9324-f9c21e6c8e03"),
                             Email = "nathaliewenske790@hotmail.com",
-                            Password = "ohr6NmC7lTCRyHe3h5d9mnh1KsQwpx8uECL5ouYczHif5bM3",
+                            Password = "yU5ceiBQyJMWdyYm3tJFYSafXhtDmGk8D8hAW8gC///XFbZg",
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ResetPasswordExpiry = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Role = "User",
@@ -93,9 +93,9 @@ namespace OfficeOrganizer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("77928cc6-d7cb-40a8-a69d-ab56be841663"),
+                            Id = new Guid("610cf14b-8741-4f58-ad7c-a043f5881806"),
                             Email = "admin@admin.de",
-                            Password = "yLowCWdqLtRvqbP5p+q5fZzsRDH2czDz1DXLvbfYNXKxSrbC",
+                            Password = "2dJt5RWJfFiwiXMrT7ayCSLxBE5Sm1cqZuyTJdsEPL0Ll5Bw",
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ResetPasswordExpiry = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Role = "Admin",

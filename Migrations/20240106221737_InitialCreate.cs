@@ -3,10 +3,14 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace OfficeOrganizer.Migrations
 {
+    /// <inheritdoc />
     public partial class InitialCreate : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
@@ -61,14 +65,14 @@ namespace OfficeOrganizer.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Email", "Password", "RefreshToken", "RefreshTokenExpiryTime", "ResetPasswordExpiry", "ResetPasswordToken", "Role", "Terms", "Token", "Username" },
-                values: new object[] { new Guid("77928cc6-d7cb-40a8-a69d-ab56be841663"), "admin@admin.de", "yLowCWdqLtRvqbP5p+q5fZzsRDH2czDz1DXLvbfYNXKxSrbC", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Admin", false, null, "NatlinuxAdmin" });
-
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "Id", "Email", "Password", "RefreshToken", "RefreshTokenExpiryTime", "ResetPasswordExpiry", "ResetPasswordToken", "Role", "Terms", "Token", "Username" },
-                values: new object[] { new Guid("8ba01d10-752a-4ca6-b752-3a10a4366335"), "nathaliewenske790@hotmail.com", "ohr6NmC7lTCRyHe3h5d9mnh1KsQwpx8uECL5ouYczHif5bM3", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "User", false, null, "NatlinuxUser" });
+                values: new object[,]
+                {
+                    { new Guid("610cf14b-8741-4f58-ad7c-a043f5881806"), "admin@admin.de", "2dJt5RWJfFiwiXMrT7ayCSLxBE5Sm1cqZuyTJdsEPL0Ll5Bw", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Admin", false, null, "NatlinuxAdmin" },
+                    { new Guid("ae644cfd-8534-4fec-9324-f9c21e6c8e03"), "nathaliewenske790@hotmail.com", "yU5ceiBQyJMWdyYm3tJFYSafXhtDmGk8D8hAW8gC///XFbZg", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "User", false, null, "NatlinuxUser" }
+                });
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

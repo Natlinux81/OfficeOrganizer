@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit{
   public usersList!: user[];
   public dataSource: any;
   public role! : string;
-  public username : string = "";
+  public username! : string;
   public displayedColumns : string[] =["No.", "Username" ,"E-Mail" , "Role", "Actions"]
 
   @ViewChild(MatSort ,{static :true}) sort !: MatSort

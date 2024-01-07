@@ -1,10 +1,9 @@
 using System.Text;
 using OfficeOrganizer.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
+using OfficeOrganizer.UtilityServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using OfficeOrganizer.UtilityServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
