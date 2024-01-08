@@ -30,7 +30,7 @@
     <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
   </Target>
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
-    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install --force" />
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --configuration production" />
     <ItemGroup>
       <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
