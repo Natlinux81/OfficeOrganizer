@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using OfficeOrganizer.UtilityServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,9 +52,14 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();   
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
-app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+FileProvider = new PhysicalFileProvider(
+Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
+RequestPath = "/~/OfficeOrganizer"
+});
 app.UseRouting();
 
 app.UseAuthentication();

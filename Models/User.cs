@@ -17,8 +17,12 @@ namespace OfficeOrganizer.Models
         public string Token { get; set; }
         public string Role { get; set; }   
         public string RefreshToken { get; set; }
-        public DateTime RefreshTokenExpiryTime { get; set; }         
+        public DateTime RefreshTokenExpiryTime { get; set; } 
+
+        #nullable enable        
         public string? ResetPasswordToken { get; set; }
+        #nullable restore
+        
         public DateTime ResetPasswordExpiry { get; set; }
     }
 }
