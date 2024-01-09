@@ -52,14 +52,9 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();   
 }
 
-// app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
-app.UseStaticFiles(new StaticFileOptions
-{
-FileProvider = new PhysicalFileProvider(
-Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
-RequestPath = "/~/OfficeOrganizer"
-});
+app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();
