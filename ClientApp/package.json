@@ -27,6 +27,8 @@
     "@angular/router": "^17.0.8",
     "@angular/ssr": "^17.0.9",
     "@auth0/angular-jwt": "^5.1.2",
+    "@babel/plugin-transform-async-generator-functions": "^7.23.7",
+    "@babel/plugin-transform-unicode-property-regex": "^7.23.3",
     "@fullcalendar/angular": "^6.1.8",
     "@fullcalendar/core": "^6.1.8",
     "@fullcalendar/daygrid": "^6.1.8",
@@ -44,7 +46,7 @@
     "zone.js": "~0.14.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^17.0.9",
+    "@angular-devkit/build-angular": "^16.2.11",
     "@angular/cli": "^17.0.9",
     "@angular/compiler-cli": "^17.0.8",
     "@types/bootstrap": "^5.2.6",
