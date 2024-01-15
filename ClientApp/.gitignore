@@ -41,4 +41,6 @@ Thumbs.db
 
 .angular
 
-# ../appsettings.json
+# Environment Variables
+environment.prod.ts
+environment.ts

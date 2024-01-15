@@ -5,6 +5,10 @@ using OfficeOrganizer.UtilityServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.EntityFrameworkCore.Storage;
+using OfficeOrganizer.Models;
+using Org.BouncyCastle.Security;
+using OfficeOrganizer.helper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +17,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // Get Connection
-var connectionString = builder.Configuration.GetConnectionString("MyConnection");
-
+var mariaDbSettings =builder.Configuration.GetRequiredSection("MariaDbSettings").Get<MariaDbSettings>();
+var connectionString = mariaDbSettings.ConnectionString;
 builder.Services.AddDbContext<ApplicationDbContext>(options =>{
     options.UseMySql(connectionString, ServerVersion.AutoDetect (connectionString));
 });
