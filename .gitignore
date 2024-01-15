@@ -231,3 +231,6 @@ _Pvt_Extensions
 .fake/
 
 # appsettings.json
+
+ClientApp/src/environments/environment.prod.ts
+ClientApp/src/environments/environment.ts
