@@ -232,5 +232,5 @@ _Pvt_Extensions
 
 # appsettings.json
 
-/ClientApp/src/environments/environment.prod.ts
-/ClientApp/src/environments/environment.ts
+environment.prod.ts
+environment.ts
