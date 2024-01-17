@@ -231,6 +231,7 @@ _Pvt_Extensions
 
 # appsettings.json
 
-environment.prod.ts
+ClinentApp/src/environments/environment.prod.ts
 
 ClientApp/node_modules
+ClientApp/.angular
