@@ -11,20 +11,14 @@ using OfficeOrganizer.Data;
 namespace OfficeOrganizer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-<<<<<<<< HEAD:Migrations/20240106221737_InitialCreate.Designer.cs
-    [Migration("20240106221737_InitialCreate")]
+    [Migration("20230913150601_InitialCreate")]
     partial class InitialCreate
-========
-    [Migration("20230917001016_resetpassword")]
-    partial class resetpassword
->>>>>>>> parent of c4f1e29 (ready to update to dotnet 8):Migrations/20230917001016_resetpassword.Designer.cs
     {
-        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "6.0.16")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("OfficeOrganizer.Models.TaskItem", b =>
@@ -65,12 +59,6 @@ namespace OfficeOrganizer.Migrations
                     b.Property<DateTime>("RefreshTokenExpiryTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("ResetPasswordExpiry")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("ResetPasswordToken")
-                        .HasColumnType("longtext");
-
                     b.Property<string>("Role")
                         .HasColumnType("longtext");
 
@@ -90,34 +78,20 @@ namespace OfficeOrganizer.Migrations
                     b.HasData(
                         new
                         {
-<<<<<<<< HEAD:Migrations/20240106221737_InitialCreate.Designer.cs
-                            Id = new Guid("ae644cfd-8534-4fec-9324-f9c21e6c8e03"),
+                            Id = new Guid("d9065107-ae26-4ca9-8e52-e3d5a255d200"),
                             Email = "nathaliewenske790@hotmail.com",
-                            Password = "yU5ceiBQyJMWdyYm3tJFYSafXhtDmGk8D8hAW8gC///XFbZg",
-========
-                            Id = new Guid("405b39da-c3c0-44e6-8ad8-a333492ced03"),
-                            Email = "nathaliewenske790@hotmail.com",
-                            Password = "RcBf3OplqtTkzjQbafwTts9RdYC0NhDRXUPVa1FiAovVJpNQ",
->>>>>>>> parent of c4f1e29 (ready to update to dotnet 8):Migrations/20230917001016_resetpassword.Designer.cs
+                            Password = "k1LZUZLr7MP+mz2KQfnQY7Uk9HrALUsrOX79sEBYVNnMNVAs",
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ResetPasswordExpiry = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Role = "User",
                             Terms = false,
                             Username = "NatlinuxUser"
                         },
                         new
                         {
-<<<<<<<< HEAD:Migrations/20240106221737_InitialCreate.Designer.cs
-                            Id = new Guid("610cf14b-8741-4f58-ad7c-a043f5881806"),
+                            Id = new Guid("d78c5c0f-c651-4d64-ba7e-8a74ea7b8863"),
                             Email = "admin@admin.de",
-                            Password = "2dJt5RWJfFiwiXMrT7ayCSLxBE5Sm1cqZuyTJdsEPL0Ll5Bw",
-========
-                            Id = new Guid("4daa3ae6-a283-436b-86a6-79d5d177d249"),
-                            Email = "admin@admin.de",
-                            Password = "VqJ/tDt3tNJDOskaGlBUbKFYUNlyC6QVanjA9d8IBm/dKevF",
->>>>>>>> parent of c4f1e29 (ready to update to dotnet 8):Migrations/20230917001016_resetpassword.Designer.cs
+                            Password = "aajwHQA2vitmKGTADkCJsDMt6X9jkJgXxQiIDUc/6jYArGEf",
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ResetPasswordExpiry = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Role = "Admin",
                             Terms = false,
                             Username = "NatlinuxAdmin"
