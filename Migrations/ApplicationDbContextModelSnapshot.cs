@@ -82,15 +82,9 @@ namespace OfficeOrganizer.Migrations
                     b.HasData(
                         new
                         {
-<<<<<<< HEAD
-                            Id = new Guid("ae644cfd-8534-4fec-9324-f9c21e6c8e03"),
+                            Id = new Guid("9c0856f6-c245-4d61-afb8-f4cb3eee1b95"),
                             Email = "nathaliewenske790@hotmail.com",
-                            Password = "yU5ceiBQyJMWdyYm3tJFYSafXhtDmGk8D8hAW8gC///XFbZg",
-=======
-                            Id = new Guid("405b39da-c3c0-44e6-8ad8-a333492ced03"),
-                            Email = "nathaliewenske790@hotmail.com",
-                            Password = "RcBf3OplqtTkzjQbafwTts9RdYC0NhDRXUPVa1FiAovVJpNQ",
->>>>>>> parent of c4f1e29 (ready to update to dotnet 8)
+                            Password = "U5v7E/kCtZuZAPoweluJZ+aVvEdkRxe2cBCqY3R3r3sUzoy/",
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ResetPasswordExpiry = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Role = "User",
@@ -99,15 +93,9 @@ namespace OfficeOrganizer.Migrations
                         },
                         new
                         {
-<<<<<<< HEAD
-                            Id = new Guid("610cf14b-8741-4f58-ad7c-a043f5881806"),
+                            Id = new Guid("784c9802-a1f5-4c48-b94f-a50a167923ac"),
                             Email = "admin@admin.de",
-                            Password = "2dJt5RWJfFiwiXMrT7ayCSLxBE5Sm1cqZuyTJdsEPL0Ll5Bw",
-=======
-                            Id = new Guid("4daa3ae6-a283-436b-86a6-79d5d177d249"),
-                            Email = "admin@admin.de",
-                            Password = "VqJ/tDt3tNJDOskaGlBUbKFYUNlyC6QVanjA9d8IBm/dKevF",
->>>>>>> parent of c4f1e29 (ready to update to dotnet 8)
+                            Password = "qoJgIsMt9yANZR/WeCPq7RnuFKKGeWDQ/c3KBhaJY6qqOeCe",
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ResetPasswordExpiry = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Role = "Admin",

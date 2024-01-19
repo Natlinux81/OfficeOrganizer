@@ -11,14 +11,15 @@ using OfficeOrganizer.Data;
 namespace OfficeOrganizer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230913150601_InitialCreate")]
+    [Migration("20240118161739_InitialCreate")]
     partial class InitialCreate
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.16")
+                .HasAnnotation("ProductVersion", "8.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("OfficeOrganizer.Models.TaskItem", b =>
@@ -59,6 +60,12 @@ namespace OfficeOrganizer.Migrations
                     b.Property<DateTime>("RefreshTokenExpiryTime")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<DateTime>("ResetPasswordExpiry")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("ResetPasswordToken")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Role")
                         .HasColumnType("longtext");
 
@@ -78,20 +85,22 @@ namespace OfficeOrganizer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d9065107-ae26-4ca9-8e52-e3d5a255d200"),
+                            Id = new Guid("9c0856f6-c245-4d61-afb8-f4cb3eee1b95"),
                             Email = "nathaliewenske790@hotmail.com",
-                            Password = "k1LZUZLr7MP+mz2KQfnQY7Uk9HrALUsrOX79sEBYVNnMNVAs",
+                            Password = "U5v7E/kCtZuZAPoweluJZ+aVvEdkRxe2cBCqY3R3r3sUzoy/",
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ResetPasswordExpiry = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Role = "User",
                             Terms = false,
                             Username = "NatlinuxUser"
                         },
                         new
                         {
-                            Id = new Guid("d78c5c0f-c651-4d64-ba7e-8a74ea7b8863"),
+                            Id = new Guid("784c9802-a1f5-4c48-b94f-a50a167923ac"),
                             Email = "admin@admin.de",
-                            Password = "aajwHQA2vitmKGTADkCJsDMt6X9jkJgXxQiIDUc/6jYArGEf",
+                            Password = "qoJgIsMt9yANZR/WeCPq7RnuFKKGeWDQ/c3KBhaJY6qqOeCe",
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ResetPasswordExpiry = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Role = "Admin",
                             Terms = false,
                             Username = "NatlinuxAdmin"

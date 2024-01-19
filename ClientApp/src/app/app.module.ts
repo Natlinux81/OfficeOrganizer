@@ -5,6 +5,8 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbHighlight, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 import { MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
@@ -34,6 +36,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { ForgotPasswordPopupComponent } from './authentication/forgot-password-popup/forgot-password-popup.component';
 import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
 import { InfoDialogComponent } from './shared/info-dialog/info-dialog.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // FullCalendarModule.registerPlugins([
 //   dayGridPlugin,
@@ -52,7 +55,7 @@ import { InfoDialogComponent } from './shared/info-dialog/info-dialog.component'
     CalendarComponent,
     ForgotPasswordPopupComponent,
     ResetPasswordComponent,
-    InfoDialogComponent
+    InfoDialogComponent,
 
   ],
   imports: [
@@ -73,7 +76,10 @@ import { InfoDialogComponent } from './shared/info-dialog/info-dialog.component'
     BrowserAnimationsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    FullCalendarModule
+    FullCalendarModule,
+    NgbModule,
+    NgbPaginationModule
+    
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:TokenInterceptor, multi:true}],
   bootstrap: [AppComponent]
