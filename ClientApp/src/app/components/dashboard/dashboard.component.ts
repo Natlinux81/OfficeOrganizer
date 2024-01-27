@@ -36,4 +36,5 @@ export class DashboardComponent implements OnInit {
         this.username = val || usernameFromToken
       });
   }
+
 }

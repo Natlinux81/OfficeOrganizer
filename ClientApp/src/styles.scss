@@ -51,8 +51,8 @@ $success: #d395b5;
 $secondary: #71b7c4;
 $light: #c7c7c7;
 
-// import bootstrap
-@import '../node_modules/bootstrap/scss/bootstrap';
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
 
 
 html, body { height: 100%;
@@ -82,9 +82,3 @@ margin-left: auto;
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-/* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
-
-/* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';

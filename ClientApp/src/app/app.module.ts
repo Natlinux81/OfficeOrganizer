@@ -6,7 +6,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbHighlight, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { SortDirective } from './directive/sort.directive';
 
 import { MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
@@ -55,7 +55,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CalendarComponent,
     ForgotPasswordPopupComponent,
     ResetPasswordComponent,
-    InfoDialogComponent,
+    InfoDialogComponent, 
+    SortDirective
 
   ],
   imports: [
@@ -78,9 +79,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatNativeDateModule,
     FullCalendarModule,
     NgbModule,
-    NgbPaginationModule
-    
+    NgbPaginationModule,
   ],
+  
   providers: [{provide:HTTP_INTERCEPTORS, useClass:TokenInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
