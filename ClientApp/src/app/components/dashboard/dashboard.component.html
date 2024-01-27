@@ -77,7 +77,7 @@
         <label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Full text search:</label>
         <div class="col-xs-3 col-sm-auto">
 
-          <input id="table-complete-search" type="text" class="form-control" name="searchTerm" />
+          <input id="table-complete-search" type="search" class="form-control" name="searchTerm" [(ngModel)]="filter"/>
         </div>
         <span class="col col-form-label">Loading...</span>
       </div>
@@ -95,7 +95,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of usersList.slice((page - 1) * pageSize, page * pageSize); let i = index">
+          <tr *ngFor="let user of usersList.slice((page - 1) * pageSize, page * pageSize) | users:filter; let i = index">
             <th scope="row">{{i+1}}</th>
             <td>{{user.username}}</td>
             <td>{{user.email}}</td>

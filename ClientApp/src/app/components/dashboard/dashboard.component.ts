@@ -11,11 +11,12 @@ import { UserStoreService } from 'src/app/services/user-store.service';
 export class DashboardComponent implements OnInit {
   public role!: string;
   public username!: string;
-
   public page = 1
   public pageSize = 10;
-  public usersList: user[] = []
-  public collectionSize = this.usersList.length
+  public usersList: user[] = [];
+  public collectionSize = this.usersList.length;
+  public filter : string = "";
+  public filteredUsersList: Array<user> = this.usersList;
 
   constructor(private authenticateService: AuthenticateService, private userStore: UserStoreService) {
     this.authenticateService.getAllUsers().subscribe((res) => {

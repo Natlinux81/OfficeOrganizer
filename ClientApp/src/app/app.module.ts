@@ -7,6 +7,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbHighlight, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { SortDirective } from './directive/sort.directive';
+import { FilterPipe } from './helper/filter.pipe';
 
 import { MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
@@ -56,7 +57,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ForgotPasswordPopupComponent,
     ResetPasswordComponent,
     InfoDialogComponent, 
-    SortDirective
+    SortDirective,
+    FilterPipe
 
   ],
   imports: [
