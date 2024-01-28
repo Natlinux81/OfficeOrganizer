@@ -1,9 +1,13 @@
-<h1 mat-dialog-title>{{data.title}}</h1>
-<div mat-dialog-content>
- <div class="icon"><mat-icon>{{data.icon}}</mat-icon> </div> 
-<div><p>{{data.message}}</p></div>
-</div>
-<div mat-dialog-actions align="center">
-  <button mat-raised-button color="primary" mat-dialog-close>OK</button>
-  
+<div class="modal-content text-center">
+  <div class="modal-header text-center">
+    <h2 class="modal-title">{{data.title}}</h2>
+  </div>
+  <div class="modal-body">
+    <p>{{data.message}}</p>
+    <i class="{{data.icon}}" [style.color]="data.color" style="font-size: 36px;"></i>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.close()">OK</button>
+    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+  </div>
 </div>

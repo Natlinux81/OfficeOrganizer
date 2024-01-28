@@ -9,16 +9,6 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { SortDirective } from './directive/sort.directive';
 import { FilterPipe } from './helper/filter.pipe';
 
-import { MatTableModule} from '@angular/material/table';
-import { MatPaginatorModule} from '@angular/material/paginator';
-import { MatSortModule} from '@angular/material/sort';
-import { MatCardModule} from '@angular/material/card';
-import { MatFormFieldModule} from '@angular/material/form-field';
-import { MatInputModule} from '@angular/material/input'
-import { MatIconModule} from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -65,15 +55,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     AppRoutingModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,

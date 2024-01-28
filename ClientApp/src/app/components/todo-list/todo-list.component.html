@@ -21,10 +21,10 @@
           type="checkbox" value="" id="firstCheckbox">
         <label class="form-check-label" [class.is-done]="taskItem.isDone">{{taskItem.title}}</label>
       </div>
-      <a [routerLink]="['/todo', 'edit', taskItem.id]" class="btn btn-sm" (click)="isEditMode = true" *ngIf="!taskItem.isDone"><mat-icon
-          class="edit-button">create</mat-icon></a>
-      <span (click)="delete(taskItem.id)" class="btn btn-sm" *ngIf="!taskItem.isDone"><mat-icon
-          class="remove-button">delete_forever</mat-icon></span>
+      <a [routerLink]="['/todo', 'edit', taskItem.id]" class="btn btn-sm" (click)="isEditMode = true" *ngIf="!taskItem.isDone"><i
+          class="edit-button bi bi-pen-fill"></i></a>
+      <span (click)="delete(taskItem.id)" class="btn btn-sm" *ngIf="!taskItem.isDone"><i
+          class="remove-button bi bi-trash-fill"></i></span>
     </li>
   </ul>
 </div>

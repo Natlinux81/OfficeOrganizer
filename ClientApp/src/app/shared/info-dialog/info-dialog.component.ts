@@ -1,5 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { InfoDialogData } from 'src/app/models/info-dialog-data';
 
 @Component({
@@ -8,8 +8,10 @@ import { InfoDialogData } from 'src/app/models/info-dialog-data';
   styleUrls: ['./info-dialog.component.scss']
 })
 export class InfoDialogComponent implements OnInit {
+  @Input()
+  data!: InfoDialogData;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: InfoDialogData) { }
+  constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
   }
