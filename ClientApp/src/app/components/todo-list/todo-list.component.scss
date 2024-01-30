@@ -35,26 +35,7 @@ cursor: pointer;
 
 }
 
-// .form-control:focus {
-//   box-shadow: 0 0 0 .15rem rgb(67, 70, 83, 0,25);
-// }
-
-.modal-dialog {
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  max-height: 500px;
-  max-width: 300px;
-  min-width: 250px;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-.modal-content {
-  background-color: rgb(174, 183, 217);
-
-}
-
-.modal-title, .modal-body {
-  margin: 0 auto;
+li{
+  font-weight: 500;
+  font-size: 18px;
 }

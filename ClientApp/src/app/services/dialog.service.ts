@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { InfoDialogComponent } from '../shared/info-dialog/info-dialog.component';
 import { Observable, Subject } from 'rxjs';
 import { InfoDialogData } from '../models/info-dialog-data';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class DialogService {
   constructor(private modalService: NgbModal) { }
 
   infoDialog(data: InfoDialogData): Observable<boolean> {
-    const modalRef = this.modalService.open(InfoDialogComponent, { size: 'sm', backdrop: 'static' });
+    const modalRef = this.modalService.open(InfoDialogComponent, {centered: true, backdrop: 'static' });
     modalRef.componentInstance.data = data;
 
     const resultSubject = new Subject<boolean>();
@@ -34,10 +34,11 @@ export class DialogService {
 
   succeed() {
     this.infoDialog({
-      title: 'all good',
-      message: 'perfect',
-      icon: 'check_circle_outline',
-      color:'green'
+      title: 'Action Succeed',
+      message: '',
+      icon: "bi bi-check-square-fill",
+      color:'green',
+      buttons: [{ text: 'OK', action: () => this.handleOK() }]
     });
   }
 
@@ -46,15 +47,30 @@ export class DialogService {
       title: 'Something is wrong!',
       message: 'Username or Password wrong',
       icon: "bi bi-x-octagon-fill",
-      color: 'red'
+      color: 'red',
+      buttons: [{ text: 'OK', action: () => this.handleOK() }]
     })
   }
+
   warning() {
     this.infoDialog({
-      title: 'Delete',
-      message: 'do you really want to delete',
+      title: 'Are you sure?',
+      message: 'Do you want to delete?',
       icon: "bi bi-exclamation-triangle-fill",
-      color: 'orange'
-    })
+      color: 'red',
+      buttons: [
+        { text: 'Save', action: () => this.handleSave() },
+        { text: 'OK', action: () => this.handleOK() }
+      ]
+    });
+  }
+  private handleSave() {
+    throw new Error('Method not implemented.');
+  }
+  private handleOK() {
+    this.modalService.dismissAll();
   }
 }
+
+
+

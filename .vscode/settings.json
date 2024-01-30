@@ -14,9 +14,12 @@
         }
     ],
     "cSpell.words": [
+        "devkit",
         "Hasher",
+        "Hmac",
         "Hsts",
-        "natlinux"
+        "natlinux",
+        "oidc"
     ],
     "cSpell.caseSensitive": false,
     "cSpell.language": "en, de-de"

@@ -26,7 +26,7 @@
               <!-- Password -->
               <div class="input-group mt-5">
                 <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                <input type="password" formControlName="password" class="form-control" placeholder="Password"
+                <input [type]="type" formControlName="password" class="form-control" placeholder="Password"
                   [class.error]="registerForm.controls['password'].dirty && registerForm.hasError('required' , 'password')">
                   <span (click)="hideShowPassword()" class="input-group-text"><i class="bi {{eyeIcon}}"></i></span>
               </div>

@@ -3,4 +3,5 @@ export interface InfoDialogData {
     message: string;
     icon: string;
     color: string;
+    buttons: { text: string; action: () => void; }[];
 }

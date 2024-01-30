@@ -8,10 +8,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { SortDirective } from './directive/sort.directive';
 import { FilterPipe } from './helper/filter.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -27,7 +26,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { ForgotPasswordPopupComponent } from './authentication/forgot-password-popup/forgot-password-popup.component';
 import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
 import { InfoDialogComponent } from './shared/info-dialog/info-dialog.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 // FullCalendarModule.registerPlugins([
 //   dayGridPlugin,
@@ -58,8 +57,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
     FullCalendarModule,
     NgbModule,
     NgbPaginationModule,

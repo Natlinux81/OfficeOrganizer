@@ -66,6 +66,6 @@ export class LoginComponent {
   }
 
   openPopup() {
-    this.modalService.open(ForgotPasswordPopupComponent, { size: '30%', centered: true ,backdrop: 'static' });
+    this.modalService.open(ForgotPasswordPopupComponent, {centered: true ,backdrop: 'static' });
   }
 }
