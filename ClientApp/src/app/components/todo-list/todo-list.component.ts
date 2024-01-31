@@ -1,4 +1,4 @@
-import { Component,OnInit, ViewChild} from '@angular/core';
+import { Component,ElementRef,HostListener,OnInit, ViewChild} from '@angular/core';
 import { TaskItem } from 'src/app/models/task-item';
 import { TaskService } from 'src/app/services/task.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,40 +14,39 @@ import { NgForm } from '@angular/forms';
 export class TodoListComponent implements OnInit {
 
   taskItems : TaskItem[] = []; // Array to store tasks
-  taskOwner: string = ""
-  isEditMode!: boolean
+  taskOwner: string = ""  
 
   newTask : TaskItem = { // A new task object that can be added
     id: '',
     title:'',
     isDone:false,
-    owner: ''
+    owner: '',
+    isEditMode: false
   };
 
   selectedTask : TaskItem = { // The selected task object that can be updated
     id: '',
     title:'',
     isDone:false,
-    owner: ''
+    owner: '',
+    isEditMode: false
   };
 
-  @ViewChild('FormAdd', { static: false }) formAdd!: NgForm;
+  @ViewChild('FormAdd', { static: false }) formAdd!: NgForm; 
 
   constructor(private taskService : TaskService,
               private activatedRoute : ActivatedRoute,
               private router : Router,
               private userStore : UserStoreService,
-              private authenticateService : AuthenticateService) {}
+              private authenticateService : AuthenticateService) {} 
 
   ngOnInit(): void{
       //** datepicker */
       // var date: Date = new Date(this.route.snapshot.params['date']);
-      // console.log(date);
+      // console.log(date);     
 
       // Load all tasks from the TaskService
-      this.taskService.getAllTasks().subscribe((result) => {
-        this.taskItems =result.filter(x => x.owner == this.taskOwner)
-      });
+      this.getAllTasks()
 
       //**load saved Tasks */
       this.activatedRoute.paramMap.subscribe({
@@ -71,9 +70,9 @@ export class TodoListComponent implements OnInit {
         this.newTask.owner = val || usernameFromToken
         this.taskOwner = val || usernameFromToken
       })
-    }
-
-    getAllTasks(){
+    } 
+  
+   getAllTasks(){
       this.taskService.getAllTasks().subscribe((result) => {
         this.taskItems =result.filter(x => x.owner == this.taskOwner)
       });
@@ -81,11 +80,9 @@ export class TodoListComponent implements OnInit {
 
     update(){
       // Update the selected task through the TaskService
-      this.taskService.updateTask(this.selectedTask.id, this.selectedTask).subscribe(()=>{
-        this.getAllTasks(); // Reload the tasks after the update
+      this.taskService.updateTask(this.selectedTask.id, this.selectedTask).subscribe(()=>{    
       this.router.navigate(['todo']); // Navigate to the 'todo' route
       console.log(this.selectedTask)
-      this.isEditMode = false;
       });
     }
 
@@ -104,13 +101,17 @@ export class TodoListComponent implements OnInit {
     this.taskItems = this.taskItems.filter(t => t.id != id); // Remove the deleted task from the taskItems array
   }
 
-  toggle(checkedTask : TaskItem){
+  toggleIsDone(checkedTask : TaskItem){
     // Update the status of a task (done or not) through the TaskService
     checkedTask.isDone = !checkedTask.isDone;
-    this.taskService.updateTask(checkedTask.id, checkedTask).subscribe(() =>{
-      this.getAllTasks();
+    this.taskService.updateTask(checkedTask.id, checkedTask).subscribe(() =>{     
     });
     console.log(checkedTask)
+  }
+
+  toggleEditMode(taskItem: TaskItem) {
+    this.taskItems.forEach(item => item.isEditMode = false);
+    taskItem.isEditMode = !taskItem.isEditMode;    
   }
 }
 

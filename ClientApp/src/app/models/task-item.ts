@@ -6,6 +6,7 @@ export class TaskItem{
   }
 
   public isDone = false;
+  public isEditMode = false;
 
 
 }
