@@ -20,7 +20,8 @@
            <ng-template #editField>
             <form #FormEdit="ngForm"(ngSubmit)="update()">
               <div class="input-group mb-3">
-                <input [(ngModel)]="selectedTask.title" class="form-control" name="taskTitle" type="text">               
+                <input [(ngModel)]="selectedTask.title" class="form-control" name="taskTitle" type="text">    
+                <button type="submit" class="btn btn-dark">Edit</button>
               </div>
             </form>
           </ng-template>

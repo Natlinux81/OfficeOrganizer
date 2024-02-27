@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -26,6 +27,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { ForgotPasswordPopupComponent } from './authentication/forgot-password-popup/forgot-password-popup.component';
 import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
 import { InfoDialogComponent } from './shared/info-dialog/info-dialog.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 
 // FullCalendarModule.registerPlugins([
@@ -46,6 +48,7 @@ import { InfoDialogComponent } from './shared/info-dialog/info-dialog.component'
     ForgotPasswordPopupComponent,
     ResetPasswordComponent,
     InfoDialogComponent, 
+    SpinnerComponent,
     SortDirective,
     FilterPipe
 
@@ -62,7 +65,17 @@ import { InfoDialogComponent } from './shared/info-dialog/info-dialog.component'
     NgbPaginationModule,
   ],
   
-  providers: [{provide:HTTP_INTERCEPTORS, useClass:TokenInterceptor, multi:true}],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+       useClass:LoadingInterceptor, 
+       multi:true
+    },
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptor, 
+      multi:true
+    } ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
