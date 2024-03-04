@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Dropdown} from 'bootstrap'
 import { AuthenticateService } from 'src/app/services/authenticate.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
 
@@ -34,11 +33,6 @@ export class NavMenuComponent implements OnInit {
   toggle() {
     this.isExpanded = !this.isExpanded;
   }
-
-  dropdown(dropdown : any){
-    const modal = new Dropdown(dropdown);
-    modal.toggle();
-    }
 
     logOut(){
       this.loginStatus = false;

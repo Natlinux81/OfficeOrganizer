@@ -24,9 +24,7 @@
           <li
             class="nav-item"
             [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="nav-link" *ngIf="loginStatus" [routerLink]="['/dashboard']">Dashboard</a>
+            [routerLinkActiveOptions]="{ exact: true }">           
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link" *ngIf="!loginStatus" [routerLink]="['/register']">Sign Up</a>
@@ -34,18 +32,17 @@
           <li class="nav-item" *ngIf="!loginStatus" [routerLinkActive]="['link-active']">
             <a class="nav-link" [routerLink]="['/login']">Sign In</a>
           </li>
-          <!-- //ToDo -->
+      
          <ng-container *ngIf="loginStatus" >
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            {{username}}
-            </a>
-            <ul class="dropdown-menu">
-            <li><a (click)="logOut()" class="dropdown-item" data-bs-theme="light">Log out</a></li>
-            <li><a class="dropdown-item">Another action</a></li>
-            <li><a class="dropdown-item">Something else here</a></li>
-            </ul>
-            </li>
+              <div ngbDropdown> 
+                <a class="nav-link" id="gfg" ngbDropdownToggle>{{username}}</a> 
+                <div ngbDropdownMenu="gfg" class="bg-primary "> 
+                  <button ngbDropdownItem (click)="logOut()">Log out</button> 
+                  <button ngbDropdownItem [routerLink]="['/dashboard']">Dashboard</button> 
+                  <button ngbDropdownItem [routerLink]="['/todo']">ToDo-List</button> 
+                  <button ngbDropdownItem [routerLink]="['/calendar']">Calendar</button> 
+                </div> 
+              </div>         
          </ng-container>
         </ul>
       </div>
