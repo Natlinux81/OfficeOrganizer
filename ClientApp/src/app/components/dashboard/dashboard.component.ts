@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   public collectionSize = this.usersList.length;
   public filter : string = "";
   public filteredUsersList: Array<user> = this.usersList;
+  public selectedDate = new Date();
 
   constructor(private authenticateService: AuthenticateService, private userStore: UserStoreService) {
     this.authenticateService.getAllUsers().subscribe((res) => {
@@ -37,5 +38,4 @@ export class DashboardComponent implements OnInit {
         this.username = val || usernameFromToken
       });
   }
-
 }

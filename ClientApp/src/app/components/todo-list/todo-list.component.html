@@ -26,7 +26,7 @@
             </form>
           </ng-template>
           </div>
-              <a [routerLink]="['/todo', 'edit', taskItem.id]" class="btn btn-sm" *ngIf="!taskItem.isDone && !taskItem.isEditMode"
+              <a class="btn btn-sm" *ngIf="!taskItem.isDone && !taskItem.isEditMode"
               (click)="toggleEditMode(taskItem)"><i class="edit-button bi bi-pen-fill"></i></a>
           <span (click)="delete(taskItem.id)" class="btn btn-sm" *ngIf="!taskItem.isDone && !taskItem.isEditMode"><i
               class="remove-button bi bi-trash-fill"></i></span>
