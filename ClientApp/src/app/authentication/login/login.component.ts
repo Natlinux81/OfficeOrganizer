@@ -54,8 +54,8 @@ export class LoginComponent {
           this.router.navigate(['dashboard'])
 
         },
-        error: (err) => {
-          this.infoService.error()
+        error: (err) => {          
+          alert("Username or Password wrong")
         }
       })
 

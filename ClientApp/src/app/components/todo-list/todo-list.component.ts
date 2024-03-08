@@ -98,6 +98,8 @@ export class TodoListComponent implements OnInit {
   }
 
   delete(id: string) {
+    const taskItemName = this.taskItems.find(t => t.id === id)
+    if(confirm(`Are you sure you want to delete ${taskItemName?.title}?`))
     // Delete a task through the TaskService using the provided ID
     this.taskService.deleteTask(id).subscribe();
     this.taskItems = this.taskItems.filter(t => t.id != id); // Remove the deleted task from the taskItems array
