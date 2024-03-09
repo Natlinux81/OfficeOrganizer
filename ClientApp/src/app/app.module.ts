@@ -26,6 +26,7 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ForgotPasswordPopupComponent } from './authentication/forgot-password-popup/forgot-password-popup.component';
 import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
+import { ExpensesComponent } from './components/expenses/expenses.component';
 import { InfoDialogComponent } from './shared/info-dialog/info-dialog.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 
@@ -47,6 +48,7 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
     CalendarComponent,
     ForgotPasswordPopupComponent,
     ResetPasswordComponent,
+    ExpensesComponent,
     InfoDialogComponent, 
     SpinnerComponent,
     SortDirective,

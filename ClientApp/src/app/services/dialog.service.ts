@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { InfoDialogComponent } from '../shared/info-dialog/info-dialog.component';
 import { Observable, Subject } from 'rxjs';
 import { InfoDialogData } from '../models/info-dialog-data';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Injectable({
   providedIn: 'root'

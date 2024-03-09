@@ -6,7 +6,6 @@ import { AuthenticateService } from 'src/app/services/authenticate.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ForgotPasswordPopupComponent } from '../forgot-password-popup/forgot-password-popup.component';
-import { DialogService } from 'src/app/services/dialog.service';
 
 @Component({
   selector: 'app-login',
@@ -24,8 +23,7 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private authenticateService: AuthenticateService,
     private userStore: UserStoreService,
-    private modalService: NgbModal,
-    private infoService: DialogService) { }
+    private modalService: NgbModal) { }
 
 
   loginForm = this.formBuilder.group({
