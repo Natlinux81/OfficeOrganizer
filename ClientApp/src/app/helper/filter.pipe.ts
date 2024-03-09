@@ -1,15 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { user } from '../models/user';
+import { User } from '../models/user';
 
 @Pipe({ name: 'users' })
 export class FilterPipe implements PipeTransform {
-  transform(values: user[], filter: string): user[] {
+  transform(values: User[], filter: string): User[] {
     if (!filter || filter.length === 0 || values.length === 0) {
       return values; 
     }
 
   
-    const filteredValues = values.filter((value: user) => {
+    const filteredValues = values.filter((value: User) => {
       const usernameFound =
         value.username.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
       const emailFound =

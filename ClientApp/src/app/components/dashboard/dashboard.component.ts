@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { user } from 'src/app/models/user';
+import { User } from 'src/app/models/user';
 import { AuthenticateService } from 'src/app/services/authenticate.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
-import { ExpensesComponent } from '../expenses/expenses.component';
-import { Amount } from 'src/app/models/Amount';
+import { Amount } from 'src/app/models/amount';
+import { AddEditAmountComponent } from '../add-edit-amount/add-edit-amount.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,10 +16,10 @@ export class DashboardComponent implements OnInit {
   public username!: string;
   public page = 1
   public pageSize = 10;
-  public usersList: user[] = [];
+  public usersList: User[] = [];
   public collectionSize = this.usersList.length;
   public filter : string = "";
-  public filteredUsersList: Array<user> = this.usersList;
+  public filteredUsersList: Array<User> = this.usersList;
   public selectedDate = new Date();
 
   constructor(private authenticateService: AuthenticateService, private userStore: UserStoreService, private modalService: NgbModal) {
@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
       });
   }
   openPopup() {
-    const modalRef = this.modalService.open(ExpensesComponent, {
+    const modalRef = this.modalService.open(AddEditAmountComponent, {
       centered: true,
       backdrop: 'static'
     });

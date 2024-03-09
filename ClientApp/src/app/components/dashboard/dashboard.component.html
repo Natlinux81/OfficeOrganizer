@@ -38,10 +38,7 @@
                       <h2 class="mb-4">Earnings</h2>
                       <p class="mb-1" style="font-size: 28px;">2500,- €</p>
                     </div>
-                  </div>                  
-                  <div class="text-center">
-                    <button class="btn btn-secondary">Add Earnings</button>
-                  </div>
+                  </div>    
               </div>
               <div class="col-md-6">                
                   <div class="card mb-3 bg bg-success">
@@ -49,11 +46,11 @@
                       <h2 class="mb-4">Expenses</h2>
                       <p class="mb-1" style="font-size: 28px;">2500,- €</p>                      
                     </div>
-                  </div>                
-                <div class="text-center">
-                  <button class="btn btn-success" (click)="openPopup()">Add Expenses</button>
-                </div>
+                  </div>  
               </div>
+            </div>
+            <div class="text-center mb-3">
+              <button class="btn btn-lg btn-primary" style="font-weight: 600;" (click)="openPopup()">+ Add Amount</button>
             </div>
             <a class="text-decoration-none" [routerLink]="['/financial']">
               <div class="row">

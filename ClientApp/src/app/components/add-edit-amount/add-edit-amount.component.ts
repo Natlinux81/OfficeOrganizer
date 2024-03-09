@@ -1,21 +1,23 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Amount } from 'src/app/models/Amount';
+import { Amount } from 'src/app/models/amount';
 
 @Component({
-  selector: 'app-expenses',
-  templateUrl: './expenses.component.html',
-  styleUrls: ['./expenses.component.scss']
+  selector: 'app-add-edit-amount',
+  templateUrl: './add-edit-amount.component.html',
+  styleUrl: './add-edit-amount.component.scss'
 })
-export class ExpensesComponent {
+export class AddEditAmountComponent {
   @Input() data!: Amount;
 
   constructor( public activeModal: NgbActiveModal, private formBuilder : FormBuilder) {}
 
   AddAmountForm = this.formBuilder.group({
     description: ['' , [Validators.required, Validators.minLength(3)]],
-    amount: ['' , Validators.required],
+    amounts: ['' , Validators.required],
+    earning: ['' , Validators.required],
+    expense: ['' , Validators.required],
     monthly: ['' , Validators.required],
    
   });
@@ -23,5 +25,4 @@ export class ExpensesComponent {
   saveAmount() {
     console.log(this.AddAmountForm.value);
   }
-
 }

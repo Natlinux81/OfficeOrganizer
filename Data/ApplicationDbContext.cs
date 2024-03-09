@@ -17,6 +17,7 @@ namespace OfficeOrganizer.Data
         }
         public DbSet<User> Users {get; set;}
         public DbSet<TaskItem> TaskItems { get; set; }
+        public DbSet<Amount> Amounts {get; set;}
 
          protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
