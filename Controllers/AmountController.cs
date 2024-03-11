@@ -65,7 +65,7 @@ namespace OfficeOrganizer.Controllers
           amount.Title = updateAmount.Title;
           amount.Earning = updateAmount.Earning;
           amount.Expense = updateAmount.Expense;
-          amount.monthly = updateAmount.monthly;
+          amount.Monthly = updateAmount.Monthly;
 
           await _applicationDbContext.SaveChangesAsync();
           return Ok(amount);

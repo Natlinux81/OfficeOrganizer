@@ -11,31 +11,31 @@ export class TaskService {
 
   constructor(private httpClient : HttpClient) { }
 
-  tasksUrl = environment.taskUrl
+  baseUrl = environment.baseUrl
 
   getAllTasks() : Observable <TaskItem[]> {
-    var response = this.httpClient.get<TaskItem[]>(this.tasksUrl + 'TaskItem');
+    var response = this.httpClient.get<TaskItem[]>(this.baseUrl + 'TaskItem');
     return response;
   }
 
   addTask(newTask : TaskItem) : Observable <TaskItem>{
     newTask.id = "00000000-0000-0000-0000-000000000000";
-    var response = this.httpClient.post<TaskItem>(this.tasksUrl + 'TaskItem',newTask);
+    var response = this.httpClient.post<TaskItem>(this.baseUrl + 'TaskItem',newTask);
     return response;
   }
 
   getTaskById(id : string) : Observable <TaskItem>{
-    var response = this.httpClient.get<TaskItem>(this.tasksUrl + 'TaskItem/' + id);
+    var response = this.httpClient.get<TaskItem>(this.baseUrl + 'TaskItem/' + id);
     return response;
   }
 
   updateTask(id : string, updateTask : TaskItem) : Observable <TaskItem>{
-    var response = this.httpClient.put<TaskItem>(this.tasksUrl + 'TaskItem/' + id, updateTask);
+    var response = this.httpClient.put<TaskItem>(this.baseUrl + 'TaskItem/' + id, updateTask);
     return response;
   }
 
   deleteTask(id: string) : Observable<TaskItem> {
-    var response = this.httpClient.delete<TaskItem>(this.tasksUrl + "TaskItem/" + id)
+    var response = this.httpClient.delete<TaskItem>(this.baseUrl + "TaskItem/" + id)
     return response;
   }
 }

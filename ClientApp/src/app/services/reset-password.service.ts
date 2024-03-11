@@ -8,15 +8,15 @@ import { ResetPasswordModel } from '../models/reset-password-model';
 })
 export class ResetPasswordService {
 
-  private authenticateUrl = environment.authenticateUrl
+  private baseUrl = environment.baseUrl
 
 constructor(private httpClient : HttpClient) { }
 
 sendResetPasswordLink(email : string){
-  return this.httpClient.post<any>(`${this.authenticateUrl}send-reset-email/${email}`,{})
+  return this.httpClient.post<any>(`${this.baseUrl}send-reset-email/${email}`,{})
 }
 
 resetPassword(resetPasswordObj : ResetPasswordModel){
-  return this.httpClient.post<any>(`${this.authenticateUrl}reset-password` ,resetPasswordObj);
+  return this.httpClient.post<any>(`${this.baseUrl}reset-password` ,resetPasswordObj);
 }
 }

@@ -10,7 +10,7 @@ import { TokenApiModel } from '../models/token-api.model';
 })
 export class AuthenticateService {
 
-  private authenticateUrl = environment.authenticateUrl
+  private baseUrl = environment.baseUrl
 
   private userPayload:any;
 
@@ -19,16 +19,16 @@ export class AuthenticateService {
   }
 
   getAllUsers(){
-    return this.httpClient.get<any>(this.authenticateUrl);
+    return this.httpClient.get<any>(this.baseUrl + 'user');
   }
 
   signUp(userRequest : any){
-    var response = this.httpClient.post<any>(this.authenticateUrl + 'register',userRequest);
+    var response = this.httpClient.post<any>(this.baseUrl + 'user/register',userRequest);
     return response;
   }
 
   signIn(userRequest : any){
-    var response = this.httpClient.post<any>(this.authenticateUrl + 'authenticate',userRequest);
+    var response = this.httpClient.post<any>(this.baseUrl + 'user/authenticate',userRequest);
     return response;
   }
 
@@ -38,23 +38,23 @@ export class AuthenticateService {
   }
 
   storeToken(tokenValue : string){
-    return localStorage.setItem('token', tokenValue)
+    return localStorage.setItem('user/token', tokenValue)
   }
 
   storeRefreshToken(tokenValue : string){
-    return localStorage.setItem('refreshToken', tokenValue)
+    return localStorage.setItem('user/refreshToken', tokenValue)
   }
 
   getToken(){
-    return localStorage.getItem('token')
+    return localStorage.getItem('user/token')
   }
 
   getRefreshToken(){
-    return localStorage.getItem('refreshToken')
+    return localStorage.getItem('user/refreshToken')
   }
 
   isLoggedIn(): boolean{
-    return !!localStorage.getItem('token')
+    return !!localStorage.getItem('user/token')
   }
 
   decodedToken(){
@@ -74,6 +74,6 @@ export class AuthenticateService {
   }
 
   renewToken(tokenApi : TokenApiModel){
-    return this.httpClient.post<any>(`${this.authenticateUrl}refresh`, tokenApi)
+    return this.httpClient.post<any>(`${this.baseUrl}user/refresh`, tokenApi)
   }
 }

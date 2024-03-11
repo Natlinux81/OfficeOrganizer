@@ -12,6 +12,6 @@ namespace OfficeOrganizer.Models
         public int Amounts { get; set; }
         public bool Earning { get; set; }
         public bool Expense { get; set; }
-        public bool monthly { get; set; }
+        public bool Monthly { get; set; }
     }
 }
