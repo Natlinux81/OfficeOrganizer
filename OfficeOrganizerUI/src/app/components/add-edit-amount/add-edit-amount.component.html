@@ -1,0 +1,37 @@
+<div class="modal-content">
+  <div class="modal-header justify-content-center">
+    <h3 class="modal-title m-3">{{data.title}}</h3>
+  </div>
+  <form action="" [formGroup]="AddAmountForm" (ngSubmit)="saveAmount()">
+    <div class="modal-body">
+      <div class="input-group w-75 mx-auto">
+        <input formControlName="description" type="text" class="form-control" placeholder="Description">
+        <!-- <small *ngIf="!resetPasswordEmail" class="text-danger">*E-Mail is required</small>
+      <small *ngIf="!isValidEmail && resetPasswordEmail" class="text-danger">*E-Mail is invalid</small> -->
+      </div>
+      <div class="input-group mt-4 w-50 mx-auto">
+        <input formControlName="amounts" type="number" class="form-control" placeholder="Amount">
+      </div>
+<div class="d-flex justify-content-center">
+  <div class="form-check d-flex justify-content-between col-6 mt-4">
+    <div>
+      <input formControlName="earning" class="form-check-input me-2" type="checkbox" style="background-color: green;"/>
+      <label class="form-check-label" for="form2Example3g">earning</label>
+    </div>
+    <div class="">
+      <input formControlName="expense" class="form-check-input me-2" type="checkbox" style="background-color: red;"/>
+      <label class="form-check-label" for="form2Example3g">expense</label>
+    </div>
+  </div>
+</div>
+      <div class="form-check d-flex justify-content-center mt-4">
+        <input formControlName="monthly" class="form-check-input me-2" type="checkbox"/>
+        <label class="form-check-label" for="form2Example3g">monthly</label>
+      </div>
+    </div>
+    <div class="modal-footer d-flex justify-content-center">
+      <button type="submit" class="btn btn-primary me-4">Save</button>
+      <button type="button" class="btn btn-light" (click)="activeModal.close()">Close</button>
+    </div>
+  </form>
+</div>

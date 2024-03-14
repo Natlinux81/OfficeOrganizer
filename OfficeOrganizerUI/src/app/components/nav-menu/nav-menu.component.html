@@ -1,0 +1,51 @@
+<header>
+  <nav
+    class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 fixed-top bg-primary"
+  >
+    <div class="container">
+      <img class="logo" src="../../../assets/images/OfficeOrganizerLogo.png">
+      <a class="navbar-brand" [routerLink]="['/']">OfficeOrganizer</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target=".navbar-collapse"
+        aria-label="Toggle navigation"
+        [attr.aria-expanded]="isExpanded"
+        (click)="toggle()"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+        [ngClass]="{ show: isExpanded }"
+      >
+        <ul class="navbar-nav flex-grow">
+          <li
+            class="nav-item"
+            [routerLinkActive]="['link-active']"
+            [routerLinkActiveOptions]="{ exact: true }">           
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link" *ngIf="!loginStatus" [routerLink]="['/register']">Sign Up</a>
+          </li>
+          <li class="nav-item" *ngIf="!loginStatus" [routerLinkActive]="['link-active']">
+            <a class="nav-link" [routerLink]="['/login']">Sign In</a>
+          </li>
+      
+         <ng-container *ngIf="loginStatus" >
+              <div ngbDropdown> 
+                <a class="nav-link" id="gfg" ngbDropdownToggle>{{username}}</a> 
+                <div ngbDropdownMenu="gfg" class="bg-primary "> 
+                  <button ngbDropdownItem (click)="logOut()">Log out</button> 
+                  <button ngbDropdownItem [routerLink]="['/dashboard']">Dashboard</button> 
+                  <button ngbDropdownItem [routerLink]="['/todo']">ToDo-List</button> 
+                  <button ngbDropdownItem [routerLink]="['/calendar']">Calendar</button> 
+                </div> 
+              </div>         
+         </ng-container>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

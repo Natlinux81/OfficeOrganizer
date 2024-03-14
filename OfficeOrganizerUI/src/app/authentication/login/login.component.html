@@ -1,0 +1,52 @@
+<div class="d-flex align-items-center justify-content-center vh-100">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+        <div class="card">
+          <div class="card-body p-5">
+            <h1 class="text-center mb-5">Log in</h1>
+            <form [formGroup]="loginForm">
+              <!-- Username -->
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                <input type="text" formControlName="username" class="form-control" placeholder="Username"
+                  [class.error]="loginForm.controls['username'].dirty && loginForm.hasError('required' , 'username')">
+              </div>
+              <small *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required' , 'username')"
+                class="text-danger">*Username is required</small>
+              <!-- Password -->
+              <div class="input-group mt-5">
+                <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                <input [type]="type" formControlName="password" class="form-control" placeholder="Password"
+                  [class.error]="loginForm.controls['password'].dirty && loginForm.hasError('required' , 'password')">
+                <span (click)="hideShowPassword()" class="input-group-text"><i class="bi {{eyeIcon}}"></i></span>
+              </div>
+              <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required' , 'password')"
+                class="text-danger">*Password is required</small>
+              <!-- Redirect links -->
+              <p class="m-1"><a (click)="openPopup()" class="fw-bold text-body"><u>Forgot Password?</u></a></p>
+              <div class="d-flex justify-content-center">
+                <button [disabled]="loginForm.invalid" (click)="onSignIn()" type="submit"
+                  class="btn btn-lg btn-light">Sign in</button>
+              </div>
+              <p class="text-center text-black-50 mt-5 mb-0">You don´t have an account? <a [routerLink]="['/register']"
+                  class="fw-bold text-body"><u>Sign up here!</u></a></p>
+            </form>
+          </div>
+          <!-- other Sign in -->
+          <div class="text-center py-3">
+            <p class="text-center">or Sign in with</p>
+            <a href="https://www.google.com" target="_blank" class="px-2"><img
+                src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
+                width="40" alt="" /></a>
+            <a href="https://www.github.com" target="_blank" class="px-2"><img
+                src="https://www.freepnglogos.com/uploads/512x512-logo-png/512x512-logo-github-icon-35.png" width="40"
+                alt="" /></a>
+            <a href="https://www.facebook.com" target="_blank" class="px-2"><img
+                src="https://www.freepnglogos.com/uploads/facebook-logo-icon/facebook-logo-icon-facebook-icon-png-images-icons-and-png-backgrounds-1.png"
+                width="40" alt="" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

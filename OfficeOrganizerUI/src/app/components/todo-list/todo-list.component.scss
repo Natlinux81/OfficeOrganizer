@@ -1,0 +1,41 @@
+.add-button {
+  color: #ffffff;
+  background-color: rgb(23, 23, 23);
+
+}
+
+.remove-button {
+  color: rgb(180, 15, 15);
+  font-size: 18px;
+}
+
+.edit-button {
+  color: blue;
+  font-size: 18px;
+}
+.even {
+  background-color: #71b7c4;
+}
+
+.odd {
+  background-color: #d395b5;
+}
+
+.is-done {
+  text-decoration: line-through;
+  color: #c7c7c7;
+}
+
+.checkbox{
+border-color: black;
+cursor: pointer;
+}
+.form-check-input:checked {
+  background-color: #4e4646
+
+}
+
+li{
+  font-weight: 500;
+  font-size: 18px;
+}
