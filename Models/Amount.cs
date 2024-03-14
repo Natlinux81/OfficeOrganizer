@@ -9,7 +9,7 @@ namespace OfficeOrganizer.Models
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
-        public int Amounts { get; set; }
+        public decimal Amounts { get; set; }
         public bool Earning { get; set; }
         public bool Expense { get; set; }
         public bool Monthly { get; set; }

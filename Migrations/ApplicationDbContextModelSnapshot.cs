@@ -7,7 +7,7 @@ using OfficeOrganizer.Data;
 
 #nullable disable
 
-namespace OfficeOrganizer.Migrations
+namespace OfficeOrganizerAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -25,8 +25,8 @@ namespace OfficeOrganizer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<int>("Amounts")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Amounts")
+                        .HasColumnType("decimal(65,30)");
 
                     b.Property<bool>("Earning")
                         .HasColumnType("tinyint(1)");
@@ -108,9 +108,9 @@ namespace OfficeOrganizer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c3a4cbe6-0d30-4ec2-81be-a874c1a0d4ca"),
+                            Id = new Guid("7c736fb5-e4dd-4fd8-a971-1a27d87ab523"),
                             Email = "nathaliewenske790@hotmail.com",
-                            Password = "YOPRn8pnJipxrJrQQ93LTm+eRNl0norQZm+z/NBMtnZNZA0b",
+                            Password = "OKJI2jbMgRd3u+JrbaVkDedFQLWqyEoL5GTbP6dnw63x9tYY",
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ResetPasswordExpiry = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Role = "User",
@@ -119,9 +119,9 @@ namespace OfficeOrganizer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4c1db70d-faca-4447-b37f-5ef5c4088390"),
+                            Id = new Guid("e6ab7937-8f03-4c3a-b552-805b886f1c29"),
                             Email = "admin@admin.de",
-                            Password = "yfHaWZCWI93A5OZ2Xx0LkoOm+lSLoM+Zvr/T0wbfi0LQ8mel",
+                            Password = "38Wq2Qbr91x5u1Vs7Wyd3ea4g8rGCVM91xzpWajKQXDrUGxv",
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ResetPasswordExpiry = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Role = "Admin",

@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:44491",
+"RedirectUrl": "",
+"LaunchCommand": "npm start",
+"WorkingDirectory": "/home/natlinux/Projekte/OfficeOrganizer/OfficeOrganizerAPI/../OfficeOrganizerUI/",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}
