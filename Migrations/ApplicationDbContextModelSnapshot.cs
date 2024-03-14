@@ -34,11 +34,11 @@ namespace OfficeOrganizer.Migrations
                     b.Property<bool>("Expense")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<bool>("Monthly")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Title")
                         .HasColumnType("longtext");
-
-                    b.Property<bool>("monthly")
-                        .HasColumnType("tinyint(1)");
 
                     b.HasKey("Id");
 
@@ -108,9 +108,9 @@ namespace OfficeOrganizer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("6d792451-6c69-4e8e-9092-9ea956f7b7a2"),
+                            Id = new Guid("c3a4cbe6-0d30-4ec2-81be-a874c1a0d4ca"),
                             Email = "nathaliewenske790@hotmail.com",
-                            Password = "gM+1iAXRD/c1twaXeCnIO6YL1TJRLDIJtBZhGTk0nDi1Aj9H",
+                            Password = "YOPRn8pnJipxrJrQQ93LTm+eRNl0norQZm+z/NBMtnZNZA0b",
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ResetPasswordExpiry = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Role = "User",
@@ -119,9 +119,9 @@ namespace OfficeOrganizer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("817d4982-696f-48af-8059-7412bd75ba76"),
+                            Id = new Guid("4c1db70d-faca-4447-b37f-5ef5c4088390"),
                             Email = "admin@admin.de",
-                            Password = "d/S475MsyM0jorOCNGbZ1W+67oQLuWo/ROGQ/KSB+8VOOr4k",
+                            Password = "yfHaWZCWI93A5OZ2Xx0LkoOm+lSLoM+Zvr/T0wbfi0LQ8mel",
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ResetPasswordExpiry = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Role = "Admin",

@@ -32,7 +32,7 @@ namespace OfficeOrganizer.Data
             var defaultUser = new User{
                     Id = Guid.NewGuid(),
                     Username = "NatlinuxUser",
-                    Password = PasswordHasher.HashPassword("Esperanto198!"),
+                    Password = PasswordHasher.HashPassword("User@123"),
                     Email = "nathaliewenske790@hotmail.com",
                     Role = "User"     
                 };
