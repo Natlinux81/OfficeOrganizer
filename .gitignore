@@ -232,8 +232,6 @@ _Pvt_Extensions
 
 # appsettings.json
 
-OfficeOrganizerUI/src/environments/environment.prod.ts
-OfficeOrganizerUI/src/environments/environment.ts
 OfficeOrganizerUI/dist
 OfficeOrganizerUI/node_modules
 OfficeOrganizerUI/.angular
