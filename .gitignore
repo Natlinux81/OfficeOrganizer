@@ -235,3 +235,4 @@ _Pvt_Extensions
 OfficeOrganizerUI/dist
 OfficeOrganizerUI/node_modules
 OfficeOrganizerUI/.angular
+OfficeOrganizerUI/src/environments/environment.prod.ts
